@@ -1030,9 +1030,7 @@
     <div class="contact-grid">
 
       <form class="contact-form" id="contactForm">
-        <!-- Pending: replace YOUR_WORKER_URL below with the deployed Cloudflare Worker URL -->
-        <!-- Pending: replace YOUR_WEB3FORMS_KEY below with the Web3Forms access key -->
-        <input type="hidden" id="workerUrl" value="https://holy-smoke-922f.cachafpm.workers.dev/" />
+        <input type="hidden" id="workerUrl" value="https://holy-smoke-922f.cachafpm.workers.dev" />
         <input type="hidden" name="access_key" value="68f8c9d3-17eb-47d4-a85b-7b65aedc2310" />
         <input type="hidden" name="subject" value="New enquiry from fpmsg.co.uk" />
         <input type="hidden" name="from_name" value="FPM International Website" />
@@ -1133,14 +1131,6 @@
       e.preventDefault();
 
       var workerUrl = document.getElementById('workerUrl').value;
-
-      // Dev fallback: simulate success if placeholder not replaced
-      if (workerUrl === 'YOUR_WORKER_URL') {
-        showMsg('success', 'Enquiry received &mdash; we\'ll be in touch within 48 hours.');
-        form.reset();
-        return;
-      }
-
       var btn = form.querySelector('.btn-submit');
       btn.disabled = true;
       btn.textContent = 'Sending…';
@@ -1156,14 +1146,14 @@
         .then(function (r) { return r.json(); })
         .then(function (d) {
           if (d.success) {
-            showMsg('success', 'Enquiry received &mdash; we\'ll be in touch within 48 hours.');
+            showMsg('success', 'Enquiry received — we\'ll be in touch within 48 hours.');
             form.reset();
           } else {
-            showMsg('error', 'Something went wrong &mdash; please email us directly at info@fpmsg.co.uk');
+            showMsg('error', 'Something went wrong — please email us directly at info@fpmsg.co.uk');
           }
         })
         .catch(function () {
-          showMsg('error', 'Network error &mdash; please email us directly at info@fpmsg.co.uk');
+          showMsg('error', 'Network error — please email us directly at info@fpmsg.co.uk');
         })
         .finally(function () {
           btn.disabled = false;
