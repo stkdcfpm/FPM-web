@@ -1029,8 +1029,13 @@
     <p class="section-sub">Tell us what you need and we'll come back with a full landed-cost estimate within 48 hours.</p>
     <div class="contact-grid">
 
-      <!-- Replace YOUR_FORM_ID with your Formspree form ID from formspree.io -->
-      <form class="contact-form" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <form class="contact-form" id="contactForm">
+        <!-- Pending: replace YOUR_WORKER_URL below with the deployed Cloudflare Worker URL -->
+        <!-- Pending: replace YOUR_WEB3FORMS_KEY below with the Web3Forms access key -->
+        <input type="hidden" id="workerUrl" value="YOUR_WORKER_URL" />
+        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY" />
+        <input type="hidden" name="subject" value="New enquiry from fpmsg.co.uk" />
+        <input type="hidden" name="from_name" value="FPM International Website" />
         <div class="form-row">
           <div class="form-group">
             <label>Your Name</label>
@@ -1062,7 +1067,7 @@
           <textarea name="message" placeholder="Product type, quantity, destination, timeline&hellip;"></textarea>
         </div>
         <button type="submit" class="btn-submit">Send Enquiry &rarr;</button>
-        <p class="form-notice">We respond within 48 hours. Your details are never shared with third parties.</p>
+        <p class="form-notice">We respond within 48 hours. Your enquiry is processed securely and never passed to third parties without your consent.</p>
         <div id="formMsg"></div>
       </form>
 
@@ -1122,29 +1127,47 @@
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade-in').forEach(function (el) { io.observe(el); });
 
-    // Formspree AJAX submission
+    // Contact form — submits via Cloudflare Worker to Web3Forms
     var form = document.getElementById('contactForm');
     form.addEventListener('submit', function (e) {
-      var action = form.getAttribute('action');
-      if (action.indexOf('YOUR_FORM_ID') !== -1) {
-        e.preventDefault();
+      e.preventDefault();
+
+      var workerUrl = document.getElementById('workerUrl').value;
+
+      // Dev fallback: simulate success if placeholder not replaced
+      if (workerUrl === 'YOUR_WORKER_URL') {
         showMsg('success', 'Enquiry received &mdash; we\'ll be in touch within 48 hours.');
         form.reset();
         return;
       }
-      e.preventDefault();
-      var data = new FormData(form);
-      fetch(action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
-        .then(function (r) {
-          if (r.ok) {
+
+      var btn = form.querySelector('.btn-submit');
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+
+      var data = {};
+      new FormData(form).forEach(function (v, k) { data[k] = v; });
+
+      fetch(workerUrl + '/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+          if (d.success) {
             showMsg('success', 'Enquiry received &mdash; we\'ll be in touch within 48 hours.');
             form.reset();
           } else {
-            showMsg('error', 'Something went wrong &mdash; please email us directly.');
+            showMsg('error', 'Something went wrong &mdash; please email us directly at info@fpmsg.co.uk');
           }
         })
         .catch(function () {
-          showMsg('error', 'Network error &mdash; please email us directly.');
+          showMsg('error', 'Network error &mdash; please email us directly at info@fpmsg.co.uk');
+        })
+        .finally(function () {
+          btn.disabled = false;
+          btn.textContent = 'Send Enquiry →';
         });
     });
 
