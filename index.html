@@ -28,7 +28,6 @@
       line-height: 1.6;
     }
 
-    /* ─── TYPE ─── */
     .mono-tag {
       font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
@@ -69,7 +68,7 @@
 
     section { padding: 88px 6%; }
 
-    /* ─── NAV ─── */
+    /* NAV */
     nav {
       position: sticky;
       top: 0;
@@ -83,12 +82,7 @@
       height: 64px;
     }
 
-    .nav-logo {
-      text-decoration: none;
-      display: flex;
-      align-items: baseline;
-      gap: 10px;
-    }
+    .nav-logo { text-decoration: none; display: flex; align-items: baseline; gap: 10px; }
 
     .nav-logo-mark {
       font-family: Rajdhani, sans-serif;
@@ -111,11 +105,7 @@
       margin-left: 2px;
     }
 
-    .nav-links {
-      display: flex;
-      gap: 36px;
-      list-style: none;
-    }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
 
     .nav-links a {
       font-family: Rajdhani, sans-serif;
@@ -151,15 +141,9 @@
       padding: 4px;
     }
 
-    .nav-toggle span {
-      display: block;
-      width: 22px;
-      height: 2px;
-      background: var(--ink);
-      border-radius: 1px;
-    }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--ink); border-radius: 1px; }
 
-    /* ─── HERO ─── */
+    /* HERO */
     .hero {
       min-height: 92vh;
       display: flex;
@@ -239,11 +223,7 @@
       margin-bottom: 36px;
     }
 
-    .hero-actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
 
     .btn-primary {
       display: inline-block;
@@ -307,7 +287,7 @@
       margin-top: 5px;
     }
 
-    /* ─── SERVICES ─── */
+    /* SERVICES */
     #services { background: #f0ede4; }
 
     .services-grid {
@@ -319,13 +299,7 @@
       overflow: hidden;
     }
 
-    .service-card {
-      background: var(--cream);
-      padding: 36px 30px;
-      transition: background .15s;
-      position: relative;
-    }
-
+    .service-card { background: var(--cream); padding: 36px 30px; transition: background .15s; position: relative; }
     .service-card:hover { background: #fff; }
 
     .service-num {
@@ -338,51 +312,14 @@
       display: block;
     }
 
-    .service-card h3 {
-      font-family: Rajdhani, sans-serif;
-      font-size: 1.25rem;
-      font-weight: 700;
-      letter-spacing: .02em;
-      margin-bottom: 12px;
-      color: var(--ink);
-    }
-
-    .service-card p {
-      font-size: 0.93rem;
-      font-weight: 500;
-      color: var(--muted);
-      line-height: 1.65;
-    }
-
-    .service-card ul {
-      list-style: none;
-      margin-top: 18px;
-    }
-
-    .service-card ul li {
-      font-size: 0.88rem;
-      font-weight: 500;
-      color: var(--muted);
-      padding: 5px 0;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
+    .service-card h3 { font-family: Rajdhani, sans-serif; font-size: 1.25rem; font-weight: 700; letter-spacing: .02em; margin-bottom: 12px; color: var(--ink); }
+    .service-card p { font-size: 0.93rem; font-weight: 500; color: var(--muted); line-height: 1.65; }
+    .service-card ul { list-style: none; margin-top: 18px; }
+    .service-card ul li { font-size: 0.88rem; font-weight: 500; color: var(--muted); padding: 5px 0; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; }
     .service-card ul li:last-child { border-bottom: none; }
+    .service-card ul li::before { content: ''; display: inline-block; width: 4px; height: 4px; border-radius: 50%; background: var(--red); flex-shrink: 0; }
 
-    .service-card ul li::before {
-      content: '';
-      display: inline-block;
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: var(--red);
-      flex-shrink: 0;
-    }
-
-    /* ─── HOW IT WORKS ─── */
+    /* HOW IT WORKS */
     #how { background: var(--cream); }
 
     .steps {
@@ -394,43 +331,15 @@
       overflow: hidden;
     }
 
-    .step {
-      padding: 36px 28px;
-      background: var(--cream);
-      transition: background .15s;
-    }
-
+    .step { padding: 36px 28px; background: var(--cream); transition: background .15s; }
     .step:hover { background: #fff; }
 
-    .step-num {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 28px;
-      font-weight: 600;
-      color: var(--red);
-      opacity: .35;
-      line-height: 1;
-      margin-bottom: 20px;
-    }
+    .step-num { font-family: 'JetBrains Mono', monospace; font-size: 28px; font-weight: 600; color: var(--red); opacity: .35; line-height: 1; margin-bottom: 20px; }
+    .step h4 { font-family: Rajdhani, sans-serif; font-size: 1.05rem; font-weight: 700; letter-spacing: .04em; margin-bottom: 8px; color: var(--ink); }
+    .step p { font-size: 0.88rem; font-weight: 500; color: var(--muted); line-height: 1.6; }
 
-    .step h4 {
-      font-family: Rajdhani, sans-serif;
-      font-size: 1.05rem;
-      font-weight: 700;
-      letter-spacing: .04em;
-      margin-bottom: 8px;
-      color: var(--ink);
-    }
-
-    .step p {
-      font-size: 0.88rem;
-      font-weight: 500;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    /* ─── PRODUCTS ─── */
+    /* PRODUCTS */
     #products { background: var(--ink); color: var(--cream); }
-
     #products .section-label { color: var(--red); }
     #products h2 { color: var(--cream); }
     #products .section-sub { color: rgba(250,248,242,.55); }
@@ -444,34 +353,12 @@
       overflow: hidden;
     }
 
-    .product-tag {
-      background: rgba(250,248,242,.04);
-      padding: 24px 20px;
-      transition: background .15s;
-      cursor: default;
-    }
-
+    .product-tag { background: rgba(250,248,242,.04); padding: 24px 20px; transition: background .15s; cursor: default; }
     .product-tag:hover { background: rgba(200,49,46,.12); }
+    .product-tag-name { font-family: Rajdhani, sans-serif; font-size: 0.97rem; font-weight: 600; color: rgba(250,248,242,.85); letter-spacing: .03em; }
+    .product-tag-cat { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 600; letter-spacing: .25em; color: rgba(200,49,46,.8); text-transform: uppercase; margin-bottom: 6px; }
 
-    .product-tag-name {
-      font-family: Rajdhani, sans-serif;
-      font-size: 0.97rem;
-      font-weight: 600;
-      color: rgba(250,248,242,.85);
-      letter-spacing: .03em;
-    }
-
-    .product-tag-cat {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 9px;
-      font-weight: 600;
-      letter-spacing: .25em;
-      color: rgba(200,49,46,.8);
-      text-transform: uppercase;
-      margin-bottom: 6px;
-    }
-
-    /* ─── CORRIDORS ─── */
+    /* CORRIDORS */
     #corridors { background: #f0ede4; }
 
     .corridor-grid {
@@ -483,225 +370,208 @@
       overflow: hidden;
     }
 
-    .corridor-card {
-      background: var(--cream);
-      padding: 32px 28px;
-      transition: background .15s;
-    }
-
+    .corridor-card { background: var(--cream); padding: 32px 28px; transition: background .15s; }
     .corridor-card:hover { background: #fff; }
+    .corridor-from-to { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600; letter-spacing: .3em; color: var(--red); text-transform: uppercase; margin-bottom: 12px; }
+    .corridor-card h4 { font-family: Rajdhani, sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: 10px; }
+    .corridor-card p { font-size: 0.9rem; font-weight: 500; color: var(--muted); line-height: 1.65; }
 
-    .corridor-from-to {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: .3em;
-      color: var(--red);
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-
-    .corridor-card h4 {
-      font-family: Rajdhani, sans-serif;
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--ink);
-      margin-bottom: 10px;
-    }
-
-    .corridor-card p {
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--muted);
-      line-height: 1.65;
-    }
-
-    /* ─── ABOUT ─── */
+    /* ABOUT */
     #about { background: var(--cream); }
 
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 72px;
-      align-items: start;
-    }
-
-    .about-text p {
-      font-size: 0.97rem;
-      font-weight: 500;
-      color: var(--muted);
-      line-height: 1.8;
-      margin-bottom: 18px;
-    }
-
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+    .about-text p { font-size: 0.97rem; font-weight: 500; color: var(--muted); line-height: 1.8; margin-bottom: 18px; }
     .about-text strong { color: var(--ink); font-weight: 700; }
 
     .credentials { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
-
-    .credential {
-      padding: 20px 24px;
-      border-bottom: 1px solid var(--border);
-      background: var(--cream);
-      transition: background .15s;
-    }
-
+    .credential { padding: 20px 24px; border-bottom: 1px solid var(--border); background: var(--cream); transition: background .15s; }
     .credential:last-child { border-bottom: none; }
     .credential:hover { background: #fff; }
+    .credential-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 600; letter-spacing: .28em; text-transform: uppercase; color: var(--red); margin-bottom: 4px; }
+    .credential-value { font-family: Rajdhani, sans-serif; font-size: 1rem; font-weight: 700; color: var(--ink); }
+    .credential-detail { font-size: 0.83rem; font-weight: 500; color: var(--muted); margin-top: 2px; }
 
-    .credential-label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 9px;
-      font-weight: 600;
-      letter-spacing: .28em;
-      text-transform: uppercase;
-      color: var(--red);
-      margin-bottom: 4px;
-    }
-
-    .credential-value {
-      font-family: Rajdhani, sans-serif;
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--ink);
-    }
-
-    .credential-detail {
-      font-size: 0.83rem;
-      font-weight: 500;
-      color: var(--muted);
-      margin-top: 2px;
-    }
-
-    /* ─── CONTACT ─── */
+    /* CONTACT */
     #contact { background: var(--ink); color: var(--cream); }
-
     #contact h2 { color: var(--cream); }
     #contact .section-sub { color: rgba(250,248,242,.55); }
     #contact .section-label { color: var(--red); }
 
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 72px;
-      align-items: start;
-    }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
 
-    .contact-form {
+    .contact-info { display: flex; flex-direction: column; gap: 0; padding-top: 8px; }
+
+    .ci-item { padding: 20px 0; border-bottom: 1px solid rgba(250,248,242,.08); display: flex; flex-direction: column; gap: 4px; }
+    .ci-item:last-child { border-bottom: none; }
+    .ci-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 600; letter-spacing: .3em; text-transform: uppercase; color: var(--red); }
+    .ci-value { font-family: Rajdhani, sans-serif; font-size: 1rem; font-weight: 600; color: rgba(250,248,242,.85); }
+    .ci-value a { color: inherit; text-decoration: none; }
+    .ci-value a:hover { color: var(--cream); }
+
+    /* CHAT PANEL */
+    .chat-panel {
+      width: 100%;
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      border: 1px solid rgba(250,248,242,.15);
+      border-radius: 6px;
+      overflow: hidden;
+      background: rgba(250,248,242,.04);
     }
 
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-
-    .form-group { display: flex; flex-direction: column; gap: 5px; }
-
-    .form-group label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 9px;
-      font-weight: 600;
-      letter-spacing: .3em;
-      color: rgba(250,248,242,.5);
-      text-transform: uppercase;
-    }
-
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
+    .chat-status-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
       background: rgba(250,248,242,.06);
-      border: 1px solid rgba(250,248,242,.12);
-      border-radius: 4px;
-      color: var(--cream);
-      font-size: 15px;
+      border-bottom: 1px solid rgba(250,248,242,.1);
+    }
+
+    .chat-status-indicator {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    .chat-status-indicator.offline { background: rgba(250,248,242,.25); }
+    .chat-status-indicator.thinking { background: var(--red); animation: chat-pulse 1s ease-in-out infinite; }
+    .chat-status-indicator.error { background: var(--red); }
+
+    @keyframes chat-pulse { 0%,100% { opacity:1; } 50% { opacity:.35; } }
+
+    .chat-status-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: rgba(250,248,242,.55);
+    }
+
+    .chat-messages {
+      height: 360px;
+      overflow-y: auto;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      scroll-behavior: smooth;
+    }
+
+    .chat-message { display: flex; max-width: 85%; }
+    .chat-message--assistant { align-self: flex-start; }
+    .chat-message--user { align-self: flex-end; flex-direction: row-reverse; }
+
+    .chat-message__bubble {
       font-family: Rajdhani, sans-serif;
+      font-size: 0.97rem;
       font-weight: 500;
-      padding: 11px 14px;
-      outline: none;
-      transition: border-color .15s, background .15s;
-      -webkit-appearance: none;
+      line-height: 1.55;
+      padding: 10px 14px;
+      border-radius: 4px;
+      white-space: pre-wrap;
+      word-break: break-word;
     }
 
-    .form-group input::placeholder,
-    .form-group textarea::placeholder { color: rgba(250,248,242,.25); }
-
-    .form-group select option { background: #1a1a1c; color: var(--cream); }
-
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      border-color: var(--red);
-      background: rgba(250,248,242,.09);
+    .chat-message--assistant .chat-message__bubble {
+      background: rgba(250,248,242,.08);
+      color: rgba(250,248,242,.9);
+      border: 1px solid rgba(250,248,242,.1);
     }
 
-    .form-group textarea { resize: vertical; min-height: 110px; }
+    .chat-message--user .chat-message__bubble {
+      background: var(--red);
+      color: var(--cream);
+    }
 
-    .btn-submit {
+    .chat-confirm-bar {
+      padding: 12px 16px;
+      border-top: 1px solid rgba(250,248,242,.1);
+      background: rgba(250,248,242,.04);
+    }
+
+    .chat-confirm-btn {
+      width: 100%;
+      min-height: 44px;
       background: var(--red);
       color: var(--cream);
       font-family: Rajdhani, sans-serif;
       font-weight: 700;
       font-size: 15px;
-      letter-spacing: .08em;
-      padding: 13px 24px;
+      letter-spacing: .06em;
       border: none;
       border-radius: 4px;
       cursor: pointer;
       transition: background .15s;
-      text-align: center;
     }
 
-    .btn-submit:hover { background: var(--red2); }
+    .chat-confirm-btn:hover { background: var(--red2); }
+    .chat-confirm-btn:disabled { opacity: .5; cursor: not-allowed; }
 
-    .form-notice {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10px;
-      font-weight: 500;
-      color: rgba(250,248,242,.35);
-      letter-spacing: .1em;
-      line-height: 1.6;
-    }
-
-    #formMsg {
-      display: none;
+    .chat-input-area {
+      display: flex;
+      gap: 8px;
       padding: 12px 16px;
+      border-top: 1px solid rgba(250,248,242,.1);
+      align-items: flex-end;
+    }
+
+    .chat-input {
+      flex: 1;
+      min-height: 44px;
+      background: rgba(250,248,242,.06);
+      border: 1px solid rgba(250,248,242,.12);
       border-radius: 4px;
+      color: var(--cream);
       font-family: Rajdhani, sans-serif;
       font-size: 15px;
-      font-weight: 600;
+      font-weight: 500;
+      padding: 10px 12px;
+      outline: none;
+      resize: none;
+      transition: border-color .15s;
     }
 
-    .contact-info { display: flex; flex-direction: column; gap: 0; padding-top: 8px; }
+    .chat-input::placeholder { color: rgba(250,248,242,.25); }
+    .chat-input:focus { border-color: var(--red); }
+    .chat-input:disabled { opacity: .5; cursor: not-allowed; }
 
-    .ci-item {
-      padding: 20px 0;
-      border-bottom: 1px solid rgba(250,248,242,.08);
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .ci-item:last-child { border-bottom: none; }
-
-    .ci-label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 9px;
-      font-weight: 600;
-      letter-spacing: .3em;
-      text-transform: uppercase;
-      color: var(--red);
-    }
-
-    .ci-value {
+    .chat-send-btn {
+      min-width: 44px;
+      min-height: 44px;
+      background: var(--red);
+      color: var(--cream);
       font-family: Rajdhani, sans-serif;
-      font-size: 1rem;
-      font-weight: 600;
-      color: rgba(250,248,242,.85);
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: .06em;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background .15s;
+      padding: 0 16px;
     }
 
-    .ci-value a { color: inherit; text-decoration: none; }
-    .ci-value a:hover { color: var(--cream); }
+    .chat-send-btn:hover { background: var(--red2); }
+    .chat-send-btn:disabled { opacity: .5; cursor: not-allowed; }
 
-    /* ─── FOOTER ─── */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* FOOTER */
     footer {
       background: #050507;
       color: rgba(250,248,242,.35);
@@ -713,51 +583,18 @@
       gap: 12px;
     }
 
-    .footer-logo {
-      font-family: Rajdhani, sans-serif;
-      font-weight: 700;
-      font-size: 16px;
-      letter-spacing: -.01em;
-    }
-
+    .footer-logo { font-family: Rajdhani, sans-serif; font-weight: 700; font-size: 16px; letter-spacing: -.01em; }
     .footer-logo .m { color: var(--red); }
-
-    .footer-links {
-      display: flex;
-      gap: 24px;
-    }
-
-    .footer-links a {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: .2em;
-      color: rgba(250,248,242,.4);
-      text-decoration: none;
-      text-transform: uppercase;
-      transition: color .15s;
-    }
-
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600; letter-spacing: .2em; color: rgba(250,248,242,.4); text-decoration: none; text-transform: uppercase; transition: color .15s; }
     .footer-links a:hover { color: var(--red); }
+    .footer-reg { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: .1em; color: rgba(250,248,242,.25); }
 
-    .footer-reg {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: .1em;
-      color: rgba(250,248,242,.25);
-    }
-
-    /* ─── FADE-IN ─── */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(16px);
-      transition: opacity .5s ease, transform .5s ease;
-    }
-
+    /* FADE-IN */
+    .fade-in { opacity: 0; transform: translateY(16px); transition: opacity .5s ease, transform .5s ease; }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-    /* ─── RESPONSIVE ─── */
+    /* RESPONSIVE */
     @media (max-width: 768px) {
       .nav-links { display: none; flex-direction: column; }
       .nav-links.open {
@@ -775,8 +612,12 @@
       .hero-stats { gap: 28px; margin-top: 48px; padding-top: 28px; }
       .about-grid { grid-template-columns: 1fr; gap: 40px; }
       .contact-grid { grid-template-columns: 1fr; gap: 40px; }
-      .form-row { grid-template-columns: 1fr; }
       section { padding: 64px 6%; }
+      .chat-messages { height: 280px; }
+    }
+
+    @media (max-width: 375px) {
+      .chat-messages { height: 240px; }
     }
   </style>
 </head>
@@ -840,7 +681,6 @@
     <h2>End-to-End Trade Services</h2>
     <p class="section-sub">From finding the right manufacturer to delivering goods to your destination, we manage every step.</p>
     <div class="services-grid">
-
       <div class="service-card fade-in">
         <span class="service-num">01</span>
         <h3>Global Sourcing</h3>
@@ -852,7 +692,6 @@
           <li>Certificate &amp; compliance verification</li>
         </ul>
       </div>
-
       <div class="service-card fade-in">
         <span class="service-num">02</span>
         <h3>Freight &amp; Shipping</h3>
@@ -864,7 +703,6 @@
           <li>Dangerous goods (DG) coordination</li>
         </ul>
       </div>
-
       <div class="service-card fade-in">
         <span class="service-num">03</span>
         <h3>Procurement Management</h3>
@@ -876,7 +714,6 @@
           <li>Proforma &amp; commercial invoice handling</li>
         </ul>
       </div>
-
       <div class="service-card fade-in">
         <span class="service-num">04</span>
         <h3>Caribbean Market Supply</h3>
@@ -888,7 +725,6 @@
           <li>Local market knowledge &amp; guidance</li>
         </ul>
       </div>
-
     </div>
   </section>
 
@@ -898,31 +734,11 @@
     <h2>How We Work</h2>
     <p class="section-sub">From first enquiry to goods delivered &mdash; five clear steps, no surprises.</p>
     <div class="steps">
-      <div class="step fade-in">
-        <div class="step-num">01</div>
-        <h4>Enquiry</h4>
-        <p>Tell us what you need &mdash; product, quantity, destination, timeline. We assess feasibility and costs.</p>
-      </div>
-      <div class="step fade-in">
-        <div class="step-num">02</div>
-        <h4>Sourcing</h4>
-        <p>We identify the right suppliers, verify credentials, and negotiate competitive terms on your behalf.</p>
-      </div>
-      <div class="step fade-in">
-        <div class="step-num">03</div>
-        <h4>Quotation</h4>
-        <p>A detailed landed-cost quote: goods, freight, insurance, duties, and our fee &mdash; fully itemised.</p>
-      </div>
-      <div class="step fade-in">
-        <div class="step-num">04</div>
-        <h4>Order &amp; Ship</h4>
-        <p>We place the PO, manage production, arrange freight, and keep you updated throughout transit.</p>
-      </div>
-      <div class="step fade-in">
-        <div class="step-num">05</div>
-        <h4>Delivered</h4>
-        <p>Goods arrive with full documentation. We handle any post-delivery queries or adjustments.</p>
-      </div>
+      <div class="step fade-in"><div class="step-num">01</div><h4>Enquiry</h4><p>Tell us what you need &mdash; product, quantity, destination, timeline. We assess feasibility and costs.</p></div>
+      <div class="step fade-in"><div class="step-num">02</div><h4>Sourcing</h4><p>We identify the right suppliers, verify credentials, and negotiate competitive terms on your behalf.</p></div>
+      <div class="step fade-in"><div class="step-num">03</div><h4>Quotation</h4><p>A detailed landed-cost quote: goods, freight, insurance, duties, and our fee &mdash; fully itemised.</p></div>
+      <div class="step fade-in"><div class="step-num">04</div><h4>Order &amp; Ship</h4><p>We place the PO, manage production, arrange freight, and keep you updated throughout transit.</p></div>
+      <div class="step fade-in"><div class="step-num">05</div><h4>Delivered</h4><p>Goods arrive with full documentation. We handle any post-delivery queries or adjustments.</p></div>
     </div>
   </section>
 
@@ -953,26 +769,10 @@
     <h2>Where We Operate</h2>
     <p class="section-sub">Our active shipping corridors, expanding as the business grows.</p>
     <div class="corridor-grid">
-      <div class="corridor-card fade-in">
-        <div class="corridor-from-to">Primary Corridor</div>
-        <h4>China &rarr; Caribbean</h4>
-        <p>Sourcing from manufacturers in Guangzhou, Qingdao, Foshan, and surrounding regions &mdash; shipping to Barbados and the wider Caribbean.</p>
-      </div>
-      <div class="corridor-card fade-in">
-        <div class="corridor-from-to">UK Operations</div>
-        <h4>Brighton, United Kingdom</h4>
-        <p>Registered and operating from Brighton, UK. Full regulatory oversight, Companies House registration, transparent trade services.</p>
-      </div>
-      <div class="corridor-card fade-in">
-        <div class="corridor-from-to">Sourcing Reach</div>
-        <h4>Global Manufacturing</h4>
-        <p>While China is our core sourcing region, we source globally &mdash; connecting buyers to the right manufacturer wherever the product is best made.</p>
-      </div>
-      <div class="corridor-card fade-in">
-        <div class="corridor-from-to">Expanding</div>
-        <h4>UK &rarr; West Africa</h4>
-        <p>Developing UK&ndash;Nigeria and UK&ndash;Ghana corridors to serve West African buyers with the same reliable sourcing and freight service.</p>
-      </div>
+      <div class="corridor-card fade-in"><div class="corridor-from-to">Primary Corridor</div><h4>China &rarr; Caribbean</h4><p>Sourcing from manufacturers in Guangzhou, Qingdao, Foshan, and surrounding regions &mdash; shipping to Barbados and the wider Caribbean.</p></div>
+      <div class="corridor-card fade-in"><div class="corridor-from-to">UK Operations</div><h4>Brighton, United Kingdom</h4><p>Registered and operating from Brighton, UK. Full regulatory oversight, Companies House registration, transparent trade services.</p></div>
+      <div class="corridor-card fade-in"><div class="corridor-from-to">Sourcing Reach</div><h4>Global Manufacturing</h4><p>While China is our core sourcing region, we source globally &mdash; connecting buyers to the right manufacturer wherever the product is best made.</p></div>
+      <div class="corridor-card fade-in"><div class="corridor-from-to">Expanding</div><h4>UK &rarr; West Africa</h4><p>Developing UK&ndash;Nigeria and UK&ndash;Ghana corridors to serve West African buyers with the same reliable sourcing and freight service.</p></div>
     </div>
   </section>
 
@@ -982,41 +782,17 @@
       <div class="about-text fade-in">
         <span class="section-label">About Us</span>
         <h2>A Trade Partner You Can Rely On</h2>
-        <p>
-          <strong>FPM International Ltd</strong> is a Brighton-based trade intermediary helping businesses source commercial goods from global manufacturers and get them delivered to Caribbean and international markets.
-        </p>
-        <p>
-          We bridge the gap between buyers and overseas suppliers &mdash; handling sourcing, procurement, freight logistics, and documentation so our clients can focus on their core business rather than navigating complex international trade.
-        </p>
-        <p>
-          With direct supplier relationships across China's key manufacturing regions and established freight networks into the Caribbean, we deliver goods efficiently, transparently, and at competitive landed costs.
-        </p>
-        <p>
-          Every quote includes a full breakdown of goods cost, freight, insurance, duties, and our fee. No hidden costs.
-        </p>
+        <p><strong>FPM International Ltd</strong> is a Brighton-based trade intermediary helping businesses source commercial goods from global manufacturers and get them delivered to Caribbean and international markets.</p>
+        <p>We bridge the gap between buyers and overseas suppliers &mdash; handling sourcing, procurement, freight logistics, and documentation so our clients can focus on their core business rather than navigating complex international trade.</p>
+        <p>With direct supplier relationships across China's key manufacturing regions and established freight networks into the Caribbean, we deliver goods efficiently, transparently, and at competitive landed costs.</p>
+        <p>Every quote includes a full breakdown of goods cost, freight, insurance, duties, and our fee. No hidden costs.</p>
       </div>
       <div class="about-credentials fade-in">
         <div class="credentials">
-          <div class="credential">
-            <div class="credential-label">Company Registration</div>
-            <div class="credential-value">FPM International Ltd</div>
-            <div class="credential-detail">Companies House &mdash; Registered May 2026</div>
-          </div>
-          <div class="credential">
-            <div class="credential-label">SIC 46190</div>
-            <div class="credential-value">Non-specialist wholesale trade</div>
-            <div class="credential-detail">Agents involved in the sale of a variety of goods</div>
-          </div>
-          <div class="credential">
-            <div class="credential-label">Headquarters</div>
-            <div class="credential-value">Brighton, United Kingdom</div>
-            <div class="credential-detail">Serving global buyers and Caribbean markets</div>
-          </div>
-          <div class="credential">
-            <div class="credential-label">Transparency Pledge</div>
-            <div class="credential-value">Full landed-cost itemisation</div>
-            <div class="credential-detail">Freight &middot; Duty &middot; Insurance &middot; Our fee &mdash; all shown</div>
-          </div>
+          <div class="credential"><div class="credential-label">Company Registration</div><div class="credential-value">FPM International Ltd</div><div class="credential-detail">Companies House &mdash; Registered May 2026</div></div>
+          <div class="credential"><div class="credential-label">SIC 46190</div><div class="credential-value">Non-specialist wholesale trade</div><div class="credential-detail">Agents involved in the sale of a variety of goods</div></div>
+          <div class="credential"><div class="credential-label">Headquarters</div><div class="credential-value">Brighton, United Kingdom</div><div class="credential-detail">Serving global buyers and Caribbean markets</div></div>
+          <div class="credential"><div class="credential-label">Transparency Pledge</div><div class="credential-value">Full landed-cost itemisation</div><div class="credential-detail">Freight &middot; Duty &middot; Insurance &middot; Our fee &mdash; all shown</div></div>
         </div>
       </div>
     </div>
@@ -1025,8 +801,8 @@
   <!-- CONTACT -->
   <section id="contact">
     <span class="section-label">Get in Touch</span>
-    <h2>Ready to Source?</h2>
-    <p class="section-sub">Tell us what you need and we'll come back with a full landed-cost estimate within 48 hours.</p>
+    <h2>Start Your Enquiry</h2>
+    <p class="section-sub">Tell our AI trade assistant what you need — it’ll gather the details and connect you with the FPM team.</p>
     <div class="contact-grid">
 
       <form class="contact-form" id="contactForm">
@@ -1044,21 +820,14 @@
             <input type="text" name="company" placeholder="Company name" />
           </div>
         </div>
-        <div class="form-group">
-          <label>Email Address</label>
-          <input type="email" name="email" placeholder="your@email.com" required />
+        <div class="chat-messages" id="chat-messages" role="log" aria-live="polite" aria-label="Conversation"></div>
+        <div class="chat-confirm-bar" id="chat-confirm-bar" hidden>
+          <button class="chat-confirm-btn" id="chat-confirm-btn" type="button">Confirm and Send Enquiry</button>
         </div>
-        <div class="form-group">
-          <label>Service Needed</label>
-          <select name="service" required>
-            <option value="" disabled selected>Select a service&hellip;</option>
-            <option>Global Sourcing</option>
-            <option>Freight &amp; Shipping</option>
-            <option>Procurement Management</option>
-            <option>Caribbean Market Supply</option>
-            <option>Full End-to-End Service</option>
-            <option>Other / Not Sure</option>
-          </select>
+        <div class="chat-input-area">
+          <label for="chat-input" class="sr-only">Your message</label>
+          <textarea class="chat-input" id="chat-input" rows="2" placeholder="Type your message…" maxlength="500" autocomplete="off"></textarea>
+          <button class="chat-send-btn" id="chat-send" type="button" aria-label="Send message">Send</button>
         </div>
         <div class="form-group">
           <label>Tell Us What You Need</label>
@@ -1070,26 +839,11 @@
       </form>
 
       <div class="contact-info">
-        <div class="ci-item">
-          <div class="ci-label">Email</div>
-          <div class="ci-value"><a href="mailto:info@fpmsg.co.uk">info@fpmsg.co.uk</a></div>
-        </div>
-        <div class="ci-item">
-          <div class="ci-label">Registered Office</div>
-          <div class="ci-value">Brighton, United Kingdom</div>
-        </div>
-        <div class="ci-item">
-          <div class="ci-label">Response Time</div>
-          <div class="ci-value">Within 48 hours, Mon&ndash;Fri</div>
-        </div>
-        <div class="ci-item">
-          <div class="ci-label">Operating Regions</div>
-          <div class="ci-value">UK &middot; China &middot; Caribbean &middot; West Africa</div>
-        </div>
-        <div class="ci-item">
-          <div class="ci-label">Tagline</div>
-          <div class="ci-value" style="font-family:'JetBrains Mono',monospace;font-size:.8rem;letter-spacing:.2em;opacity:.6;">TRADE &middot; TRUST &middot; TRACEABILITY</div>
-        </div>
+        <div class="ci-item"><div class="ci-label">Email</div><div class="ci-value"><a href="mailto:info@fpmsg.co.uk">info@fpmsg.co.uk</a></div></div>
+        <div class="ci-item"><div class="ci-label">Registered Office</div><div class="ci-value">Brighton, United Kingdom</div></div>
+        <div class="ci-item"><div class="ci-label">Response Time</div><div class="ci-value">Within one business day, Mon&ndash;Fri</div></div>
+        <div class="ci-item"><div class="ci-label">Operating Regions</div><div class="ci-value">UK &middot; China &middot; Caribbean &middot; West Africa</div></div>
+        <div class="ci-item"><div class="ci-label">Tagline</div><div class="ci-value" style="font-family:'JetBrains Mono',monospace;font-size:.8rem;letter-spacing:.2em;opacity:.6;">TRADE &middot; TRUST &middot; TRACEABILITY</div></div>
       </div>
 
     </div>
@@ -1112,9 +866,7 @@
       document.getElementById('navLinks').classList.toggle('open');
     });
     document.querySelectorAll('#navLinks a').forEach(function (a) {
-      a.addEventListener('click', function () {
-        document.getElementById('navLinks').classList.remove('open');
-      });
+      a.addEventListener('click', function () { document.getElementById('navLinks').classList.remove('open'); });
     });
 
     // Scroll fade-in
@@ -1159,16 +911,211 @@
           btn.disabled = false;
           btn.textContent = 'Send Enquiry →';
         });
-    });
 
-    function showMsg(type, text) {
-      var msg = document.getElementById('formMsg');
-      msg.style.display = 'block';
-      msg.style.background = type === 'success' ? 'rgba(200,49,46,.12)' : 'rgba(255,80,80,.1)';
-      msg.style.border = '1px solid ' + (type === 'success' ? 'rgba(200,49,46,.3)' : 'rgba(255,80,80,.3)');
-      msg.style.color = type === 'success' ? '#e03c39' : '#ff8080';
-      msg.innerHTML = text;
-    }
+        var messageBody =
+          'FPM AI Chat — New Trade Enquiry\n\n' +
+          'Session:     ' + (state.sessionId || 'N/A') + '\n' +
+          'Submitted:   ' + lead.submittedAt + '\n\n' +
+          '--- QUALIFICATION ---\n' +
+          'Product:     ' + (lead.product     || 'Not provided') + '\n' +
+          'Quantity:    ' + (lead.quantity    || 'Not provided') + '\n' +
+          'Destination: ' + (lead.destination || 'Not provided') + '\n' +
+          'Timeframe:   ' + (lead.timeframe   || 'Not provided') + '\n' +
+          'Budget:      ' + (lead.budget      || 'Not provided') + '\n' +
+          'Urgency:     ' + lead.urgency + '\n\n' +
+          '--- CONTACT ---\n' +
+          'Name:        ' + (lead.contactName  || '') + '\n' +
+          'Email:       ' + (lead.contactEmail || '') + '\n\n' +
+          '--- TRANSCRIPT ---\n' +
+          transcriptLines.join('\n');
+
+        return {
+          access_key: WEB3FORMS_KEY,
+          subject:    subject,
+          email:      LEAD_EMAIL,
+          from_name:  lead.contactName || 'Unknown',
+          replyto:    lead.contactEmail || '',
+          message:    messageBody,
+          lead: {
+            product:      lead.product,
+            quantity:     lead.quantity,
+            destination:  lead.destination,
+            timeframe:    lead.timeframe,
+            budget:       lead.budget,
+            urgency:      lead.urgency,
+            contactName:  lead.contactName,
+            contactEmail: lead.contactEmail,
+            sessionId:    state.sessionId,
+            submittedAt:  lead.submittedAt
+          }
+        };
+      }
+
+      function submitTranscript() {
+        var confirmBtn = document.getElementById('chat-confirm-btn');
+        if (confirmBtn) confirmBtn.disabled = true;
+
+        return fetch(SUBMIT_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(buildLeadPayload())
+        }).then(function (r) {
+          if (!r.ok) throw new Error('HTTP ' + r.status);
+          try { updatePhase('closed'); } catch (e) {}
+          renderMessage('assistant', CLOSING_MESSAGE);
+        }).catch(function () {
+          showFallback('submit_error');
+          if (confirmBtn) confirmBtn.disabled = false;
+        });
+      }
+
+      function showFallback(reason) {
+        renderMessage('assistant', FALLBACK_MESSAGE);
+        setStatus('error');
+        if (state.phase !== 'closed') {
+          var inp = document.getElementById('chat-input');
+          var btn = document.getElementById('chat-send');
+          if (inp && state.phase !== 'escalation') inp.disabled = false;
+          if (btn) btn.disabled = false;
+        }
+      }
+
+      function callWorker(messages) {
+        var controller = new AbortController();
+        var timer = setTimeout(function () { controller.abort(); }, 10000);
+
+        var stripped = messages.map(function (m) {
+          return { role: m.role, content: m.content };
+        });
+
+        var headers = { 'Content-Type': 'application/json' };
+        if (state.sessionId) headers['X-Session-ID'] = state.sessionId;
+
+        return fetch(CHAT_ENDPOINT, {
+          method: 'POST',
+          headers: headers,
+          signal: controller.signal,
+          body: JSON.stringify({
+            messages: stripped,
+            system: SYSTEM_PROMPT,
+            model: CHAT_MODEL,
+            max_tokens: MAX_TOKENS
+          })
+        }).then(function (r) {
+          clearTimeout(timer);
+          if (!r.ok) throw new Error('HTTP ' + r.status);
+          return r.json();
+        }).then(function (d) {
+          if (d.session_id && !state.sessionId) state.sessionId = d.session_id;
+          return d.content;
+        });
+      }
+
+      function handleSend() {
+        var inp = document.getElementById('chat-input');
+        var text = (inp.value || '').trim();
+        if (!text || state.phase === 'closed') return;
+        inp.value = '';
+        sendMessage(text);
+      }
+
+      function sendMessage(text) {
+        state.messages.push({ role: 'user', content: text, ts: relativeTs() });
+        if (state.messages.length > MAX_MESSAGES) {
+          state.messages = state.messages.slice(-MAX_MESSAGES);
+        }
+        renderMessage('user', text);
+
+        var inp = document.getElementById('chat-input');
+        var btn = document.getElementById('chat-send');
+        if (inp) inp.disabled = true;
+        if (btn) btn.disabled = true;
+        setStatus('thinking');
+
+        callWorker(state.messages).then(function (responseText) {
+          setStatus('online');
+
+          var hasClosed = responseText.indexOf(SENTINEL_CLOSED) !== -1;
+          var hasReady  = responseText.indexOf(SENTINEL_READY)  !== -1;
+
+          var cleaned = responseText
+            .replace(/\[FLOW_CLOSED\]/g,    '')
+            .replace(/\[CONTACT_READY\]/g, '')
+            .trim();
+
+          // FLOW_CLOSED takes priority — no /submit call
+          if (hasClosed) {
+            var wasInContactCapture = (state.phase === 'contact_capture');
+            try { updatePhase('closed'); } catch (e) {}
+            if (cleaned) renderMessage('assistant', cleaned);
+            state.messages.push({ role: 'assistant', content: cleaned, ts: relativeTs() });
+            // CLOSING_MESSAGE_NO_EMAIL only on the no-email path (TC-008)
+            if (wasInContactCapture) renderMessage('assistant', CLOSING_MESSAGE_NO_EMAIL);
+            return;
+          }
+
+          if (hasReady) {
+            try { updatePhase('contact_capture'); } catch (e) {}
+          }
+
+          // Render and store cleaned content (spec §5.3 step 4)
+          if (cleaned) renderMessage('assistant', cleaned);
+          state.messages.push({ role: 'assistant', content: cleaned, ts: relativeTs() });
+
+          // Extract contact data after response stored (spec §5.3 step 5)
+          if (state.phase === 'contact_capture') {
+            extractContactData(text);
+          }
+
+          // Trigger escalation once email confirmed (spec §5.3 step 6)
+          if (state.phase === 'contact_capture' && state.lead.contactEmail !== null) {
+            try { updatePhase('escalation'); } catch (e) {}
+          }
+
+        }).catch(function () {
+          setStatus('online');
+          showFallback('worker_error');
+        }).finally(function () {
+          // Re-enable unless closed or escalation (escalation locks input until confirm)
+          if (state.phase !== 'closed' && state.phase !== 'escalation') {
+            var inp2 = document.getElementById('chat-input');
+            var btn2 = document.getElementById('chat-send');
+            if (inp2) { inp2.disabled = false; inp2.focus(); }
+            if (btn2) btn2.disabled = false;
+          }
+        });
+      }
+
+      function initChat() {
+        state.startedAt = Date.now();
+        state.phase = 'qualifying';
+
+        var inp        = document.getElementById('chat-input');
+        var btn        = document.getElementById('chat-send');
+        var confirmBtn = document.getElementById('chat-confirm-btn');
+        var panel      = document.getElementById('chat-panel');
+
+        if (btn) btn.addEventListener('click', handleSend);
+        if (inp) {
+          inp.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSend(); }
+          });
+          inp.addEventListener('focus', function () {
+            if (panel) panel.scrollIntoView({ behavior: 'smooth', block: 'end' });
+          });
+        }
+        if (confirmBtn) confirmBtn.addEventListener('click', submitTranscript);
+
+        setStatus('online');
+        renderMessage('assistant', OPENING_MESSAGE);
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initChat);
+      } else {
+        initChat();
+      }
+    })();
   </script>
 </body>
 </html>
