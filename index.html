@@ -28,7 +28,6 @@
       line-height: 1.6;
     }
 
-    /* ─── TYPE ─── */
     .mono-tag {
       font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
@@ -69,7 +68,6 @@
 
     section { padding: 88px 6%; }
 
-    /* ─── NAV ─── */
     nav {
       position: sticky;
       top: 0;
@@ -159,7 +157,6 @@
       border-radius: 1px;
     }
 
-    /* ─── HERO ─── */
     .hero {
       min-height: 92vh;
       display: flex;
@@ -218,19 +215,9 @@
       border: 2px solid transparent;
     }
 
-    .btn-primary {
-      background: var(--ink);
-      color: var(--cream);
-    }
-
+    .btn-primary { background: var(--ink); color: var(--cream); }
     .btn-primary:hover { background: var(--red); }
-
-    .btn-outline {
-      background: transparent;
-      border-color: var(--border);
-      color: var(--ink);
-    }
-
+    .btn-outline { background: transparent; border-color: var(--border); color: var(--ink); }
     .btn-outline:hover { border-color: var(--ink); }
 
     .hero-stats {
@@ -262,7 +249,6 @@
       display: block;
     }
 
-    /* ─── SERVICES ─── */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -307,13 +293,9 @@
       line-height: 1.6;
     }
 
-    /* ─── MARKETS ─── */
     #markets { background: var(--ink); color: var(--cream); }
-
     #markets .section-label { color: var(--red); }
-
     #markets h2 { color: var(--cream); }
-
     #markets .section-sub { color: rgba(250,248,242,.55); }
 
     .markets-grid {
@@ -324,16 +306,9 @@
       border: 1px solid rgba(250,248,242,.08);
     }
 
-    .market-item {
-      background: var(--ink);
-      padding: 32px 28px;
-    }
+    .market-item { background: var(--ink); padding: 32px 28px; }
 
-    .market-flag {
-      font-size: 1.6rem;
-      margin-bottom: 12px;
-      display: block;
-    }
+    .market-flag { font-size: 1.6rem; margin-bottom: 12px; display: block; }
 
     .market-name {
       font-family: Rajdhani, sans-serif;
@@ -352,7 +327,6 @@
       color: rgba(250,248,242,.35);
     }
 
-    /* ─── ABOUT ─── */
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -405,7 +379,6 @@
       line-height: 1.55;
     }
 
-    /* ─── CONTACT ─── */
     #contact { background: #F5F2EA; }
 
     .contact-grid {
@@ -436,7 +409,6 @@
 
     .contact-block a:hover { color: var(--red); }
 
-    /* ─── CHAT PANEL ─── */
     .chat-panel {
       background: var(--cream);
       border: 1px solid var(--border);
@@ -602,7 +574,6 @@
       border: 0;
     }
 
-    /* ─── FOOTER ─── */
     footer {
       background: #050507;
       color: rgba(250,248,242,.35);
@@ -623,10 +594,7 @@
 
     .footer-logo .m { color: var(--red); }
 
-    .footer-links {
-      display: flex;
-      gap: 24px;
-    }
+    .footer-links { display: flex; gap: 24px; }
 
     .footer-links a {
       font-family: 'JetBrains Mono', monospace;
@@ -649,7 +617,6 @@
       color: rgba(250,248,242,.2);
     }
 
-    /* ─── RESPONSIVE ─── */
     @media (max-width: 900px) {
       .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 48px; }
     }
@@ -694,7 +661,6 @@
     </button>
   </nav>
 
-  <!-- HERO -->
   <section class="hero">
     <p class="hero-badge">// Est. 2020 — Caribbean &amp; Global Trade</p>
     <h1>Trade.<br /><span class="accent">Trust.</span><br />Traceability.</h1>
@@ -704,73 +670,50 @@
       <a href="#services" class="btn btn-outline">Our Services</a>
     </div>
     <div class="hero-stats">
-      <div>
-        <span class="stat-num">15+</span>
-        <span class="stat-label">Countries sourced</span>
-      </div>
-      <div>
-        <span class="stat-num">200+</span>
-        <span class="stat-label">Shipments managed</span>
-      </div>
-      <div>
-        <span class="stat-num">100%</span>
-        <span class="stat-label">On-time delivery rate</span>
-      </div>
+      <div><span class="stat-num">15+</span><span class="stat-label">Countries sourced</span></div>
+      <div><span class="stat-num">200+</span><span class="stat-label">Shipments managed</span></div>
+      <div><span class="stat-num">100%</span><span class="stat-label">On-time delivery rate</span></div>
     </div>
   </section>
 
-  <!-- SERVICES -->
   <section id="services">
     <span class="section-label">// What we do</span>
     <h2>End-to-end trade<br />management</h2>
     <p class="section-sub">We handle every link in the chain — from supplier qualification and purchase order management through freight, customs clearance, and last-mile delivery.</p>
     <div class="services-grid">
       <div class="service-card">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l2-1.14"/><path d="M16.5 9.4 7.55 4.24"/><polyline points="3.29 7 12 12 20.71 7"/><line x1="12" y1="22" x2="12" y2="12"/><circle cx="18.5" cy="15.5" r="2.5"/><path d="M20.27 17.27 22 19"/></svg>
-        </div>
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l2-1.14"/><path d="M16.5 9.4 7.55 4.24"/><polyline points="3.29 7 12 12 20.71 7"/><line x1="12" y1="22" x2="12" y2="12"/><circle cx="18.5" cy="15.5" r="2.5"/><path d="M20.27 17.27 22 19"/></svg></div>
         <h3>Global Sourcing</h3>
         <p>Supplier identification, qualification, and relationship management across Asia, Europe, and the Americas.</p>
       </div>
       <div class="service-card">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-        </div>
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
         <h3>Freight Management</h3>
         <p>Full container (FCL), less-than-container (LCL), air freight, and multimodal solutions with real-time tracking.</p>
       </div>
       <div class="service-card">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-        </div>
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
         <h3>Procurement</h3>
         <p>Purchase order management, supplier payment coordination, and compliance documentation from origin to destination.</p>
       </div>
       <div class="service-card">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-        </div>
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
         <h3>Trade Intelligence</h3>
         <p>Landed cost modelling, duty classification, customs documentation, and trade compliance advisory.</p>
       </div>
       <div class="service-card">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </div>
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
         <h3>Supplier Relations</h3>
         <p>Ongoing supplier audits, quality assurance coordination, and long-term partnership development.</p>
       </div>
       <div class="service-card">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        </div>
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
         <h3>Caribbean Market Entry</h3>
         <p>Import regulatory guidance, local partner introductions, and end-to-end logistics for Caribbean destinations.</p>
       </div>
     </div>
   </section>
 
-  <!-- MARKETS -->
   <section id="markets">
     <span class="section-label">// Where we operate</span>
     <h2>Global reach,<br />Caribbean expertise</h2>
@@ -787,7 +730,6 @@
     </div>
   </section>
 
-  <!-- ABOUT -->
   <section id="about">
     <span class="section-label">// Who we are</span>
     <h2>Built on the ground,<br />trusted by the chain</h2>
@@ -805,24 +747,14 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
   <section id="contact">
     <span class="section-label">// Get in touch</span>
     <h2>Start your<br />trade enquiry</h2>
     <div class="contact-grid">
       <div class="contact-info">
-        <div class="contact-block">
-          <h4>Email</h4>
-          <a href="mailto:info@fpmsg.co.uk">info@fpmsg.co.uk</a>
-        </div>
-        <div class="contact-block">
-          <h4>Location</h4>
-          <p>England &amp; Wales, United Kingdom</p>
-        </div>
-        <div class="contact-block">
-          <h4>Response time</h4>
-          <p>Within 1 business day</p>
-        </div>
+        <div class="contact-block"><h4>Email</h4><a href="mailto:info@fpmsg.co.uk">info@fpmsg.co.uk</a></div>
+        <div class="contact-block"><h4>Location</h4><p>England &amp; Wales, United Kingdom</p></div>
+        <div class="contact-block"><h4>Response time</h4><p>Within 1 business day</p></div>
       </div>
       <div class="chat-panel" id="chat-panel" role="region" aria-label="AI Trade Enquiry Assistant">
         <div class="chat-status-bar">
@@ -857,7 +789,6 @@
   (function () {
     'use strict';
 
-    /* ─── NAV TOGGLE ─── */
     var toggle = document.getElementById('nav-toggle');
     var links  = document.getElementById('nav-links');
     if (toggle && links) {
@@ -873,7 +804,6 @@
       });
     }
 
-    /* ─── CHAT ─── */
     var WORKER_URL      = 'https://holy-smoke-922f.cachafpm.workers.dev';
     var CHAT_ENDPOINT   = WORKER_URL + '/api/chat';
     var SUBMIT_ENDPOINT = WORKER_URL + '/submit';
@@ -907,24 +837,27 @@
       '- Duties and import taxes vary by destination country and HS code — never quote specific rates, always say FPM will confirm',
       '- Dangerous goods (DG/hazmat), oversized/OOG cargo, and temperature-controlled shipments need specialist handling — flag if mentioned',
       '',
-      'QUALIFICATION FLOW — collect all six fields, one question at a time:',
+      'QUALIFICATION FLOW — collect exactly these six fields, asking only for what is still missing:',
       '1. Product/commodity (and key specs if relevant)',
-      '2. Quantity/volume — IMPORTANT: if user says 20GP, 40GP, 40HQ or LCL, that is the freight mode/container type, not a unit count; confirm unit quantity separately',
+      '2. Quantity/volume — IMPORTANT: if user says 20GP, 40GP, 40HQ or LCL, that is the freight mode/container type, not a unit count; confirm unit quantity separately if not stated',
       '3. Destination port or country',
       '4. Timeframe (target shipment or arrival date)',
       '5. Budget (per unit, per container, or total landed)',
-      '6. Urgency',
+      '6. Urgency/scheduling priority (e.g. ASAP, routine, flexible) — this is always the sixth and final field; do NOT substitute company name or any other question here',
       '',
-      'Once all six are captured, emit [CONTACT_READY] at the end of your response.',
+      'If the user provides multiple fields in one message, capture them all and only ask for what is still missing. Never ask for information already given.',
+      '',
+      'Once all six are captured, emit [CONTACT_READY] on its own line at the end of your response. Never wrap [CONTACT_READY] or [FLOW_CLOSED] in markdown formatting (no asterisks, no bold, no backticks).',
       'Then deliver this GDPR notice verbatim as a standalone sentence (no prefix, no bold label, no formatting): Your details will be shared with FPM International to process your enquiry. See our privacy notice at fpmsg.co.uk/privacy.html for details.',
       'Then ask for their name in the same message.',
-      'Next user message: ask for their email address only.',
-      'Once you have a valid email, emit [CONTACT_READY] again — the system will handle the rest.',
+      'Next user message: the system will collect their name automatically. Your next response should ask for their email address only.',
+      'Once you have a valid email, emit [CONTACT_READY] again on its own line — the system will handle the rest.',
       '',
       'RULES:',
       '- Never invent prices, duty rates, or guaranteed transit times — say FPM will confirm after review',
       '- Keep responses concise (2–3 sentences max). One question at a time.',
       '- Do not ask about urgency again if the user has already indicated it (e.g. ASAP, urgent, rush)',
+      '- Do not ask for company name — it is not part of the qualification flow',
       '- If the enquiry is out of scope, user declines contact details, or involves a sanctioned jurisdiction (Iran, North Korea, Russia, Belarus, Cuba, Syria), emit [FLOW_CLOSED]',
       '- [CONTACT_READY] and [FLOW_CLOSED] are system signals — never mention or explain them to the user',
       '- If both appear in one response, [FLOW_CLOSED] takes priority'
@@ -933,9 +866,8 @@
     var state = {
       messages:  [],
       lead: {
-        product: null, quantity: null, destination: null,
-        timeframe: null, budget: null, urgency: 'not_specified',
         contactName: null, contactEmail: null,
+        urgency: 'not_specified',
         gdprAcknowledged: false, submittedAt: null
       },
       phase:     '',
@@ -970,15 +902,11 @@
 
       if (newPhase === 'escalation') {
         var lead = state.lead;
-        var summary = "Here's a summary of your enquiry:\n\n" +
-          'Product:     ' + (lead.product     || 'Not provided') + '\n' +
-          'Quantity:    ' + (lead.quantity    || 'Not provided') + '\n' +
-          'Destination: ' + (lead.destination || 'Not provided') + '\n' +
-          'Timeframe:   ' + (lead.timeframe   || 'Not provided') + '\n' +
-          'Budget:      ' + (lead.budget      || 'Not provided') + '\n' +
-          'Urgency:     ' + lead.urgency + '\n' +
-          'Contact:     ' + lead.contactName + ' <' + lead.contactEmail + '>' +
-          '\n\nClick "Confirm and Send Enquiry" to submit, or email info@fpmsg.co.uk directly.';
+        var summary =
+          "Here's a summary of your enquiry:\n\n" +
+          'Contact: ' + lead.contactName + ' <' + lead.contactEmail + '>\n\n' +
+          'Full details are in the conversation above.\n\n' +
+          'Click "Confirm and Send Enquiry" to submit, or email info@fpmsg.co.uk directly.';
         renderMessage('assistant', summary);
         var bar = document.getElementById('chat-confirm-bar');
         if (bar) bar.hidden = false;
@@ -1026,8 +954,9 @@
 
     function stripSentinels(text) {
       return text
-        .replace(/\[CONTACT_READY\]/g, '')
-        .replace(/\[FLOW_CLOSED\]/g, '')
+        .replace(/\*{0,2}\[CONTACT_READY\]\*{0,2}/g, '')
+        .replace(/\*{0,2}\[FLOW_CLOSED\]\*{0,2}/g, '')
+        .replace(/\n\s*\*{2,4}\s*\n/g, '\n')
         .trim();
     }
 
@@ -1035,7 +964,7 @@
       var t = text.toLowerCase();
       if (!state.lead.urgency || state.lead.urgency === 'not_specified') {
         if (/urgent|asap|immediately|rush|emergency/.test(t)) state.lead.urgency = 'yes';
-        else if (/not urgent|no rush|flexible/.test(t)) state.lead.urgency = 'no';
+        else if (/not urgent|no rush|flexible|routine/.test(t)) state.lead.urgency = 'no';
       }
     }
 
@@ -1095,27 +1024,20 @@
 
     function buildLeadPayload() {
       var lead = state.lead;
-      var subject = '[FPM Lead] ' + (lead.product || '(not provided)') + ' — ' + (lead.destination || '(not provided)');
-      if (lead.urgency === 'yes') subject += ' — URGENT';
+      var subject = '[FPM Lead] ' + (lead.contactName || 'Unknown') + ' — ' + (lead.urgency === 'yes' ? 'URGENT' : 'Routine');
 
       var transcriptLines = state.messages.map(function (m) {
         return fmtTs(m.ts) + ' ' + m.role.toUpperCase() + ': ' + m.content;
       });
 
       var messageBody =
-        'FPM AI Chat — New Trade Enquiry\n\n' +
-        'Session:     ' + (state.sessionId || 'N/A') + '\n' +
-        'Submitted:   ' + lead.submittedAt + '\n\n' +
-        '--- QUALIFICATION ---\n' +
-        'Product:     ' + (lead.product     || 'Not provided') + '\n' +
-        'Quantity:    ' + (lead.quantity    || 'Not provided') + '\n' +
-        'Destination: ' + (lead.destination || 'Not provided') + '\n' +
-        'Timeframe:   ' + (lead.timeframe   || 'Not provided') + '\n' +
-        'Budget:      ' + (lead.budget      || 'Not provided') + '\n' +
-        'Urgency:     ' + lead.urgency + '\n\n' +
+        'FPM AI Chat — New Trade Enquiry\n' +
+        'Session:   ' + (state.sessionId || 'N/A') + '\n' +
+        'Submitted: ' + lead.submittedAt + '\n' +
+        'Urgency:   ' + lead.urgency + '\n\n' +
         '--- CONTACT ---\n' +
-        'Name:        ' + (lead.contactName  || '') + '\n' +
-        'Email:       ' + (lead.contactEmail || '') + '\n\n' +
+        'Name:  ' + (lead.contactName  || '') + '\n' +
+        'Email: ' + (lead.contactEmail || '') + '\n\n' +
         '--- TRANSCRIPT ---\n' +
         transcriptLines.join('\n');
 
@@ -1125,19 +1047,7 @@
         email:      LEAD_EMAIL,
         from_name:  lead.contactName || 'Unknown',
         replyto:    lead.contactEmail || '',
-        message:    messageBody,
-        lead: {
-          product:      lead.product,
-          quantity:     lead.quantity,
-          destination:  lead.destination,
-          timeframe:    lead.timeframe,
-          budget:       lead.budget,
-          urgency:      lead.urgency,
-          contactName:  lead.contactName,
-          contactEmail: lead.contactEmail,
-          sessionId:    state.sessionId,
-          submittedAt:  lead.submittedAt
-        }
+        message:    messageBody
       };
     }
 
@@ -1163,9 +1073,16 @@
       state.messages.push({ role: 'user', content: text, ts: relativeTs() });
 
       if (state.phase === 'contact_capture') {
+        var hadName = !!state.lead.contactName;
         extractContactData(text);
         if (!state.lead.contactName) return;
-        if (!state.lead.contactEmail) return;
+        if (!state.lead.contactEmail) {
+          if (!hadName) renderMessage('assistant', 'Thanks ' + state.lead.contactName + '! What’s your email address?');
+          return;
+        }
+        /* Both name and email collected — go straight to escalation, no AI call needed */
+        try { updatePhase('escalation'); } catch (e) {}
+        return;
       } else {
         extractLeadData(text);
       }
@@ -1194,27 +1111,13 @@
           return;
         }
 
-        if (hasReady) {
-          if (state.phase === 'qualifying') {
-            try { updatePhase('contact_capture'); } catch (e) {}
-          } else if (state.phase === 'contact_capture' && state.lead.contactName && state.lead.contactEmail) {
-            try { updatePhase('escalation'); } catch (e) {}
-            if (cleaned) renderMessage('assistant', cleaned);
-            state.messages.push({ role: 'assistant', content: cleaned, ts: relativeTs() });
-            return;
-          }
-        }
-
-        /* AI has name+email but forgot to emit sentinel — force escalation */
-        if (state.phase === 'contact_capture' && state.lead.contactName && state.lead.contactEmail) {
-          try { updatePhase('escalation'); } catch (e) {}
-          state.messages.push({ role: 'assistant', content: cleaned, ts: relativeTs() });
-          return;
+        if (hasReady && state.phase === 'qualifying') {
+          try { updatePhase('contact_capture'); } catch (e) {}
         }
 
         setStatus('online');
-        if (btn && state.phase !== 'escalation') btn.disabled = false;
-        if (inp && state.phase !== 'escalation') inp.disabled = false;
+        if (btn && state.phase !== 'escalation' && state.phase !== 'contact_capture') btn.disabled = false;
+        if (inp && state.phase !== 'escalation' && state.phase !== 'contact_capture') inp.disabled = false;
 
         if (cleaned) renderMessage('assistant', cleaned);
         state.messages.push({ role: 'assistant', content: cleaned, ts: relativeTs() });
@@ -1248,9 +1151,8 @@
       state.phase     = 'qualifying';
       state.messages  = [];
       state.lead = {
-        product: null, quantity: null, destination: null,
-        timeframe: null, budget: null, urgency: 'not_specified',
         contactName: null, contactEmail: null,
+        urgency: 'not_specified',
         gdprAcknowledged: false, submittedAt: null
       };
       state.sessionId = genSessionId();
