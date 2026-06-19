@@ -886,14 +886,49 @@
     var LEAD_EMAIL      = 'info@fpmsg.co.uk';
 
     var OPENING_MESSAGE = 'Hi! I can help you get a trade quote or find out more about our services. What are you looking to source or ship?';
-
     var FALLBACK_MESSAGE = 'Sorry, I couldn\'t connect just now. Please try again, or email us directly at info@fpmsg.co.uk.';
-
     var CLOSING_MESSAGE = 'Thank you! Your enquiry has been sent to the FPM team. We\'ll be in touch within 1 business day.';
-
     var CLOSING_MESSAGE_NO_EMAIL = 'No problem — if you change your mind, you can always reach us at info@fpmsg.co.uk.';
 
-    var SYSTEM_PROMPT = 'You are the AI trade enquiry assistant for FPM International Ltd (fpmsg.co.uk), a UK-based freight and procurement management company specialising in Caribbean and global trade.\n\nYour role is to qualify inbound trade enquiries in a conversational, professional tone. You collect: product/commodity, quantity, destination, timeframe, budget, and urgency. Once all six are captured, emit [CONTACT_READY] at the end of your response. Then collect name (one message) and email (next message). Once you have a valid email, emit [CONTACT_READY] again — the system will transition to escalation.\n\nIf the user declines to share contact details, is out of scope (no trade enquiry), or is from a sanctioned/prohibited jurisdiction, emit [FLOW_CLOSED] at the end of your response.\n\nRules:\n- Never invent prices, transit times, or duty rates — say you will confirm after review.\n- Keep responses concise (2–4 sentences). One question at a time.\n- GDPR notice (mandatory, verbatim, before asking for name): "Your details will be shared with FPM International to process your enquiry. See our privacy notice at fpmsg.co.uk/privacy.html for details."\n- [CONTACT_READY] and [FLOW_CLOSED] are system signals — never explain them to the user.\n- If both appear in one response, [FLOW_CLOSED] takes priority.';
+    var SYSTEM_PROMPT = [
+      'You are the AI trade enquiry assistant for FPM International Ltd (fpmsg.co.uk), a UK-based freight and procurement management company specialising in Caribbean and global trade.',
+      '',
+      'ABOUT FPM:',
+      '- Sources products from China, India, UK, USA and other origins',
+      '- Delivers to Barbados (Bridgetown), Jamaica (Kingston), Trinidad & Tobago (Port of Spain), Guyana (Georgetown) and wider Caribbean',
+      '- Services: global sourcing, FCL/LCL ocean freight, air freight, customs clearance, procurement, landed cost modelling',
+      '- Typical products: commercial refrigeration, HVAC, food & beverage equipment, consumer goods, construction materials, industrial equipment, packaging',
+      '',
+      'FREIGHT KNOWLEDGE (use to inform responses; never invent specific rates):',
+      '- FCL (Full Container Load): 20GP ~25-28 CBM capacity; 40HQ (40ft High Cube) ~68 CBM capacity',
+      '- LCL (Less than Container Load): priced per CBM, suits smaller shipments',
+      '- Incoterms: EXW = buyer arranges all; FOB = seller loads at origin port; CIF = seller pays freight+insurance to destination port; DAP = seller delivers to named place',
+      '- Approximate ocean transit times: China → Caribbean 28–35 days; India → Caribbean 25–32 days; UK → Caribbean 14–21 days; USA → Caribbean 5–10 days',
+      '- Duties and import taxes vary by destination country and HS code — never quote specific rates, always say FPM will confirm',
+      '- Dangerous goods (DG/hazmat), oversized/OOG cargo, and temperature-controlled shipments need specialist handling — flag if mentioned',
+      '',
+      'QUALIFICATION FLOW — collect all six fields, one question at a time:',
+      '1. Product/commodity (and key specs if relevant)',
+      '2. Quantity/volume — IMPORTANT: if user says 20GP, 40GP, 40HQ or LCL, that is the freight mode/container type, not a unit count; confirm unit quantity separately',
+      '3. Destination port or country',
+      '4. Timeframe (target shipment or arrival date)',
+      '5. Budget (per unit, per container, or total landed)',
+      '6. Urgency',
+      '',
+      'Once all six are captured, emit [CONTACT_READY] at the end of your response.',
+      'Then deliver this GDPR notice verbatim as a standalone sentence (no prefix, no bold label, no formatting): Your details will be shared with FPM International to process your enquiry. See our privacy notice at fpmsg.co.uk/privacy.html for details.',
+      'Then ask for their name in the same message.',
+      'Next user message: ask for their email address only.',
+      'Once you have a valid email, emit [CONTACT_READY] again — the system will handle the rest.',
+      '',
+      'RULES:',
+      '- Never invent prices, duty rates, or guaranteed transit times — say FPM will confirm after review',
+      '- Keep responses concise (2–3 sentences max). One question at a time.',
+      '- Do not ask about urgency again if the user has already indicated it (e.g. ASAP, urgent, rush)',
+      '- If the enquiry is out of scope, user declines contact details, or involves a sanctioned jurisdiction (Iran, North Korea, Russia, Belarus, Cuba, Syria), emit [FLOW_CLOSED]',
+      '- [CONTACT_READY] and [FLOW_CLOSED] are system signals — never mention or explain them to the user',
+      '- If both appear in one response, [FLOW_CLOSED] takes priority'
+    ].join('\n');
 
     var state = {
       messages:  [],
@@ -922,7 +957,6 @@
       return 'fpm-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2,7);
     }
 
-    /* Phase state machine */
     function updatePhase(newPhase) {
       var order = { qualifying: 0, contact_capture: 1, escalation: 2, closed: 3 };
       var cur  = order[state.phase] !== undefined ? order[state.phase] : -1;
@@ -937,14 +971,14 @@
       if (newPhase === 'escalation') {
         var lead = state.lead;
         var summary = "Here's a summary of your enquiry:\n\n" +
-          'Product: '     + (lead.product     || 'Not provided') + '\n' +
-          'Quantity: '    + (lead.quantity    || 'Not provided') + '\n' +
+          'Product:     ' + (lead.product     || 'Not provided') + '\n' +
+          'Quantity:    ' + (lead.quantity    || 'Not provided') + '\n' +
           'Destination: ' + (lead.destination || 'Not provided') + '\n' +
-          'Timeframe: '   + (lead.timeframe   || 'Not provided') + '\n' +
-          'Budget: '      + (lead.budget      || 'Not provided') + '\n' +
-          'Urgency: '     + lead.urgency + '\n' +
-          'Contact: '     + lead.contactName + ' <' + lead.contactEmail + '>' +
-          '\n\nClick "Confirm and Send Enquiry" to submit.';
+          'Timeframe:   ' + (lead.timeframe   || 'Not provided') + '\n' +
+          'Budget:      ' + (lead.budget      || 'Not provided') + '\n' +
+          'Urgency:     ' + lead.urgency + '\n' +
+          'Contact:     ' + lead.contactName + ' <' + lead.contactEmail + '>' +
+          '\n\nClick "Confirm and Send Enquiry" to submit, or email info@fpmsg.co.uk directly.';
         renderMessage('assistant', summary);
         var bar = document.getElementById('chat-confirm-bar');
         if (bar) bar.hidden = false;
@@ -981,7 +1015,7 @@
     }
 
     function renderMessage(role, text) {
-      var log    = document.getElementById('chat-messages');
+      var log = document.getElementById('chat-messages');
       if (!log) return;
       var bubble = document.createElement('div');
       bubble.className = 'chat-bubble ' + role;
@@ -1019,13 +1053,13 @@
       }
     }
 
-    function showFallback(reason) {
+    function showFallback() {
       renderMessage('assistant', FALLBACK_MESSAGE);
       setStatus('error');
-      if (state.phase !== 'closed') {
+      if (state.phase !== 'closed' && state.phase !== 'escalation') {
         var inp = document.getElementById('chat-input');
         var btn = document.getElementById('chat-send');
-        if (inp && state.phase !== 'escalation') inp.disabled = false;
+        if (inp) inp.disabled = false;
         if (btn) btn.disabled = false;
       }
     }
@@ -1120,7 +1154,7 @@
         try { updatePhase('closed'); } catch (e) {}
         renderMessage('assistant', CLOSING_MESSAGE);
       }).catch(function () {
-        showFallback('submit_error');
+        showFallback();
         if (confirmBtn) confirmBtn.disabled = false;
       });
     }
@@ -1147,10 +1181,6 @@
       if (inp) inp.disabled = true;
 
       callWorker(state.messages).then(function (responseText) {
-        setStatus('online');
-        if (btn && state.phase !== 'escalation') btn.disabled = false;
-        if (inp && state.phase !== 'escalation') inp.disabled = false;
-
         var hasReady  = responseText.indexOf(SENTINEL_READY)  !== -1;
         var hasClosed = responseText.indexOf(SENTINEL_CLOSED) !== -1;
         var cleaned   = stripSentinels(responseText);
@@ -1169,22 +1199,40 @@
             try { updatePhase('contact_capture'); } catch (e) {}
           } else if (state.phase === 'contact_capture' && state.lead.contactName && state.lead.contactEmail) {
             try { updatePhase('escalation'); } catch (e) {}
+            if (cleaned) renderMessage('assistant', cleaned);
+            state.messages.push({ role: 'assistant', content: cleaned, ts: relativeTs() });
+            return;
           }
         }
+
+        /* AI has name+email but forgot to emit sentinel — force escalation */
+        if (state.phase === 'contact_capture' && state.lead.contactName && state.lead.contactEmail) {
+          try { updatePhase('escalation'); } catch (e) {}
+          state.messages.push({ role: 'assistant', content: cleaned, ts: relativeTs() });
+          return;
+        }
+
+        setStatus('online');
+        if (btn && state.phase !== 'escalation') btn.disabled = false;
+        if (inp && state.phase !== 'escalation') inp.disabled = false;
 
         if (cleaned) renderMessage('assistant', cleaned);
         state.messages.push({ role: 'assistant', content: cleaned, ts: relativeTs() });
 
-      }).catch(function (err) {
+      }).catch(function () {
         setStatus('online');
-        if (btn && state.phase !== 'escalation') btn.disabled = false;
-        if (inp && state.phase !== 'escalation') inp.disabled = false;
-        showFallback('call_error');
+        if (state.phase !== 'escalation') {
+          var b = document.getElementById('chat-send');
+          var i = document.getElementById('chat-input');
+          if (b) b.disabled = false;
+          if (i) i.disabled = false;
+        }
+        showFallback();
       });
     }
 
     function handleSend() {
-      if (state.phase === 'closed') return;
+      if (state.phase === 'closed' || state.phase === 'escalation') return;
       var inp = document.getElementById('chat-input');
       if (!inp) return;
       var text = inp.value.trim();
@@ -1209,9 +1257,9 @@
 
       renderMessage('assistant', OPENING_MESSAGE);
 
-      var inp = document.getElementById('chat-input');
-      var btn = document.getElementById('chat-send');
-      var cfm = document.getElementById('chat-confirm-btn');
+      var inp   = document.getElementById('chat-input');
+      var btn   = document.getElementById('chat-send');
+      var cfm   = document.getElementById('chat-confirm-btn');
       var panel = document.getElementById('chat-panel');
 
       if (btn) btn.addEventListener('click', handleSend);
