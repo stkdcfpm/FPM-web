@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="FPM International Ltd Privacy Notice — how we collect, use, and protect your personal data." />
+  <title>Privacy Notice — FPM International Ltd</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:  #FAF8F2;
+      --ink:    #0B0B0D;
+      --red:    #C8312E;
+      --muted:  rgba(11,11,13,.55);
+      --border: rgba(11,11,13,.12);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Rajdhani, system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--cream);
+      line-height: 1.7;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--cream);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 6%;
+      height: 64px;
+    }
+
+    .nav-logo {
+      text-decoration: none;
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    .nav-logo-mark {
+      font-family: Rajdhani, sans-serif;
+      font-weight: 700;
+      font-size: 22px;
+      color: var(--ink);
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    .nav-logo-mark .m { color: var(--red); }
+
+    .nav-logo-sub {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: .35em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-left: 2px;
+    }
+
+    .nav-back {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color .15s;
+    }
+
+    .nav-back:hover { color: var(--red); }
+
+    /* ─── CONTENT ─── */
+    .page-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 72px 6% 96px;
+    }
+
+    .page-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .32em;
+      text-transform: uppercase;
+      color: var(--red);
+      display: block;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-family: Rajdhani, sans-serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      line-height: 1.05;
+      margin-bottom: 12px;
+    }
+
+    .effective {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .15em;
+      color: var(--muted);
+      margin-bottom: 52px;
+      display: block;
+    }
+
+    h2 {
+      font-family: Rajdhani, sans-serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: .01em;
+      margin: 44px 0 10px;
+      padding-top: 44px;
+      border-top: 1px solid var(--border);
+    }
+
+    h2:first-of-type { border-top: none; padding-top: 0; }
+
+    p { font-size: 1.05rem; font-weight: 500; color: rgba(11,11,13,.8); margin-bottom: 14px; }
+
+    ul {
+      margin: 0 0 14px 1.4em;
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: rgba(11,11,13,.8);
+    }
+
+    ul li { margin-bottom: 6px; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 20px;
+      font-size: .97rem;
+      font-weight: 500;
+    }
+
+    th {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: left;
+      padding: 8px 12px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      color: rgba(11,11,13,.8);
+    }
+
+    tr:last-child td { border-bottom: none; }
+
+    a { color: var(--red); text-decoration: underline; }
+    a:hover { opacity: .75; }
+
+    .highlight-box {
+      background: rgba(200,49,46,.05);
+      border-left: 3px solid var(--red);
+      padding: 16px 20px;
+      margin: 20px 0;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .highlight-box p { margin-bottom: 0; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #050507;
+      color: rgba(250,248,242,.35);
+      padding: 28px 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-logo {
+      font-family: Rajdhani, sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: -.01em;
+    }
+
+    .footer-logo .m { color: var(--red); }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-links a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .2em;
+      color: rgba(250,248,242,.4);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color .15s;
+    }
+
+    .footer-links a:hover { color: var(--red); }
+
+    .footer-reg {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      color: rgba(250,248,242,.2);
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo">
+      <span class="nav-logo-mark">FP<span class="m">M</span></span>
+      <span class="nav-logo-sub">International</span>
+    </a>
+    <a href="/" class="nav-back">&larr; Back to site</a>
+  </nav>
+
+  <div class="page-wrap">
+
+    <span class="page-tag">Legal</span>
+    <h1>Privacy Notice</h1>
+    <span class="effective">Effective: June 2026 &nbsp;&mdash;&nbsp; Version 1.0</span>
+
+    <h2>1. Who we are</h2>
+    <p>FPM International Ltd (<strong>"FPM"</strong>, <strong>"we"</strong>, <strong>"us"</strong>) is the data controller for personal data collected through this website (fpmsg.co.uk).</p>
+    <p>Registered address: FPM International Ltd, England &amp; Wales.<br />
+    Contact: <a href="mailto:info@fpmsg.co.uk">info@fpmsg.co.uk</a></p>
+
+    <h2>2. What data we collect and why</h2>
+    <p>We collect personal data only when you engage with our AI trade enquiry assistant or contact us directly. We do not use tracking cookies, analytics scripts, or advertising pixels on this website.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Source</th>
+          <th>Purpose</th>
+          <th>Lawful basis</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Your name</td>
+          <td>AI chat — you provide it</td>
+          <td>Identify you in the enquiry and our response</td>
+          <td>Pre-contractual steps (Art. 6(1)(b) UK GDPR)</td>
+        </tr>
+        <tr>
+          <td>Your email address</td>
+          <td>AI chat — you provide it</td>
+          <td>Reply to your trade enquiry</td>
+          <td>Pre-contractual steps (Art. 6(1)(b) UK GDPR)</td>
+        </tr>
+        <tr>
+          <td>Conversation transcript</td>
+          <td>AI chat session</td>
+          <td>Context for FPM to prepare a relevant response; included in the enquiry email</td>
+          <td>Legitimate interests (Art. 6(1)(f) UK GDPR) — processing your enquiry effectively</td>
+        </tr>
+        <tr>
+          <td>Trade enquiry details (product, destination, volume, timeframe, budget)</td>
+          <td>AI chat — you provide them</td>
+          <td>Qualify and respond to your enquiry</td>
+          <td>Pre-contractual steps (Art. 6(1)(b) UK GDPR)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>We ask for your explicit acknowledgement before collecting your name or email. You may decline to provide contact details at any point — in that case we cannot follow up, but no data is submitted.</p>
+
+    <h2>3. How the AI chat works</h2>
+    <p>The chat assistant on this site is powered by Anthropic's Claude API. When you send a message, your conversation history is transmitted to Anthropic's servers to generate a response. Once you confirm your enquiry, the full transcript and your contact details are delivered to FPM via Web3Forms (our email delivery provider).</p>
+
+    <div class="highlight-box">
+      <p>Your conversation data is <strong>not stored in your browser</strong> (no cookies, no localStorage). It exists only in memory for the duration of your session and is cleared when you close or refresh the page.</p>
+    </div>
+
+    <h2>4. Third-party processors</h2>
+    <p>We use the following processors to operate the chat and deliver your enquiry to us:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Processor</th>
+          <th>Role</th>
+          <th>Data shared</th>
+          <th>Retention</th>
+          <th>Safeguards</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Anthropic PBC</strong><br /><a href="https://www.anthropic.com" target="_blank" rel="noopener">anthropic.com</a></td>
+          <td>AI language model (Claude Haiku)</td>
+          <td>Conversation messages (may include your name and email once provided)</td>
+          <td>Up to 30 days; not used for model training</td>
+          <td>Data Processing Addendum incorporating Standard Contractual Clauses (Module 2) and UK Addendum — <a href="https://www.anthropic.com/legal/data-processing-addendum" target="_blank" rel="noopener">anthropic.com/legal/data-processing-addendum</a></td>
+        </tr>
+        <tr>
+          <td><strong>Web3Forms</strong><br /><a href="https://web3forms.com" target="_blank" rel="noopener">web3forms.com</a></td>
+          <td>Email delivery (form-to-email service)</td>
+          <td>Your name, email, trade enquiry details, conversation transcript</td>
+          <td>Stored for email delivery; subject to Web3Forms privacy policy</td>
+          <td>Data Processing Agreement requested; GDPR-compliant service</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Both processors are instructed to process your data only as necessary to provide their services to us and are bound by confidentiality and data protection obligations.</p>
+
+    <h2>5. International transfers</h2>
+    <p>Anthropic PBC is a US-based company. Transfers of your data to Anthropic are governed by their Data Processing Addendum, which incorporates the International Data Transfer Agreement (IDTA) and Standard Contractual Clauses approved for use under UK GDPR, providing an appropriate safeguard for transfers outside the UK.</p>
+
+    <h2>6. How long we keep your data</h2>
+    <ul>
+      <li><strong>In the AI chat:</strong> session memory only — cleared when you leave the page. No data is written to your device.</li>
+      <li><strong>At Anthropic:</strong> up to 30 days from the time of your conversation, then automatically deleted.</li>
+      <li><strong>At FPM (email inbox):</strong> enquiry emails are retained for as long as necessary to manage your enquiry and any resulting business relationship, typically up to 6 years in line with standard business record-keeping practice.</li>
+    </ul>
+
+    <h2>7. Your rights</h2>
+    <p>Under UK GDPR you have the right to:</p>
+    <ul>
+      <li><strong>Access</strong> — request a copy of the personal data we hold about you</li>
+      <li><strong>Rectification</strong> — ask us to correct inaccurate data</li>
+      <li><strong>Erasure</strong> — ask us to delete your data (subject to any legal retention obligations)</li>
+      <li><strong>Restriction</strong> — ask us to limit how we process your data</li>
+      <li><strong>Objection</strong> — object to processing based on legitimate interests</li>
+      <li><strong>Portability</strong> — receive your data in a structured, machine-readable format</li>
+    </ul>
+    <p>To exercise any of these rights, contact us at <a href="mailto:info@fpmsg.co.uk">info@fpmsg.co.uk</a>. We will respond within one month.</p>
+
+    <h2>8. Complaints</h2>
+    <p>If you believe we have not handled your personal data in accordance with UK GDPR, you have the right to lodge a complaint with the UK's supervisory authority:</p>
+    <p><strong>Information Commissioner's Office (ICO)</strong><br />
+    <a href="https://ico.org.uk/make-a-complaint" target="_blank" rel="noopener">ico.org.uk/make-a-complaint</a><br />
+    Telephone: 0303 123 1113</p>
+
+    <h2>9. Cookies and tracking</h2>
+    <p>This website does not use cookies, local storage, session storage, analytics tools, or any tracking technology. No data is written to your device when you browse this site.</p>
+
+    <h2>10. Changes to this notice</h2>
+    <p>We may update this privacy notice from time to time. The effective date at the top of this page will reflect the date of the most recent revision. Material changes will be flagged on this page for 30 days.</p>
+
+    <h2>11. Contact us</h2>
+    <p>For any privacy-related questions or to exercise your rights:<br />
+    <a href="mailto:info@fpmsg.co.uk">info@fpmsg.co.uk</a><br />
+    FPM International Ltd, registered in England &amp; Wales</p>
+
+  </div>
+
+  <footer>
+    <span class="footer-logo">FP<span class="m">M</span></span>
+    <div class="footer-links">
+      <a href="/#services">Services</a>
+      <a href="/#about">About</a>
+      <a href="/#contact">Contact</a>
+      <a href="/privacy.html">Privacy</a>
+    </div>
+    <span class="footer-reg">&copy; 2026 FPM International Ltd &mdash; Registered in England &amp; Wales</span>
+  </footer>
+
+</body>
+</html>

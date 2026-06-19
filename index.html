@@ -915,11 +915,11 @@
       '5. Budget (per unit, per container, or total landed)',
       '6. Urgency',
       '',
-      'Once all six are captured, emit [CONTACT_READY] on its own line at the end of your response. Never wrap [CONTACT_READY] or [FLOW_CLOSED] in markdown formatting (no asterisks, no bold, no backticks).',
+      'Once all six are captured, emit [CONTACT_READY] at the end of your response.',
       'Then deliver this GDPR notice verbatim as a standalone sentence (no prefix, no bold label, no formatting): Your details will be shared with FPM International to process your enquiry. See our privacy notice at fpmsg.co.uk/privacy.html for details.',
       'Then ask for their name in the same message.',
       'Next user message: ask for their email address only.',
-      'Once you have a valid email, emit [CONTACT_READY] again on its own line — the system will handle the rest.',
+      'Once you have a valid email, emit [CONTACT_READY] again — the system will handle the rest.',
       '',
       'RULES:',
       '- Never invent prices, duty rates, or guaranteed transit times — say FPM will confirm after review',
@@ -1026,9 +1026,8 @@
 
     function stripSentinels(text) {
       return text
-        .replace(/\*{0,2}\[CONTACT_READY\]\*{0,2}/g, '')
-        .replace(/\*{0,2}\[FLOW_CLOSED\]\*{0,2}/g, '')
-        .replace(/\n\s*\*{2,4}\s*\n/g, '\n')
+        .replace(/\[CONTACT_READY\]/g, '')
+        .replace(/\[FLOW_CLOSED\]/g, '')
         .trim();
     }
 
@@ -1164,13 +1163,9 @@
       state.messages.push({ role: 'user', content: text, ts: relativeTs() });
 
       if (state.phase === 'contact_capture') {
-        var hadName = !!state.lead.contactName;
         extractContactData(text);
         if (!state.lead.contactName) return;
-        if (!state.lead.contactEmail) {
-          if (!hadName) renderMessage('assistant', 'Thanks ' + state.lead.contactName + '! What’s your email address?');
-          return;
-        }
+        if (!state.lead.contactEmail) return;
       } else {
         extractLeadData(text);
       }
