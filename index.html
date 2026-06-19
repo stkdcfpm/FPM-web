@@ -586,90 +586,6 @@
       align-items: start;
     }
 
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-
-    .form-group { display: flex; flex-direction: column; gap: 5px; }
-
-    .form-group label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 9px;
-      font-weight: 600;
-      letter-spacing: .3em;
-      color: rgba(250,248,242,.5);
-      text-transform: uppercase;
-    }
-
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      background: rgba(250,248,242,.06);
-      border: 1px solid rgba(250,248,242,.12);
-      border-radius: 4px;
-      color: var(--cream);
-      font-size: 15px;
-      font-family: Rajdhani, sans-serif;
-      font-weight: 500;
-      padding: 11px 14px;
-      outline: none;
-      transition: border-color .15s, background .15s;
-      -webkit-appearance: none;
-    }
-
-    .form-group input::placeholder,
-    .form-group textarea::placeholder { color: rgba(250,248,242,.25); }
-
-    .form-group select option { background: #1a1a1c; color: var(--cream); }
-
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      border-color: var(--red);
-      background: rgba(250,248,242,.09);
-    }
-
-    .form-group textarea { resize: vertical; min-height: 110px; }
-
-    .btn-submit {
-      background: var(--red);
-      color: var(--cream);
-      font-family: Rajdhani, sans-serif;
-      font-weight: 700;
-      font-size: 15px;
-      letter-spacing: .08em;
-      padding: 13px 24px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background .15s;
-      text-align: center;
-    }
-
-    .btn-submit:hover { background: var(--red2); }
-
-    .form-notice {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10px;
-      font-weight: 500;
-      color: rgba(250,248,242,.35);
-      letter-spacing: .1em;
-      line-height: 1.6;
-    }
-
-    #formMsg {
-      display: none;
-      padding: 12px 16px;
-      border-radius: 4px;
-      font-family: Rajdhani, sans-serif;
-      font-size: 15px;
-      font-weight: 600;
-    }
-
     .contact-info { display: flex; flex-direction: column; gap: 0; padding-top: 8px; }
 
     .ci-item {
@@ -700,6 +616,172 @@
 
     .ci-value a { color: inherit; text-decoration: none; }
     .ci-value a:hover { color: var(--cream); }
+
+    /* ─── CHAT PANEL ─── */
+    .chat-panel {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid rgba(250,248,242,.15);
+      border-radius: 6px;
+      overflow: hidden;
+      background: rgba(250,248,242,.04);
+    }
+
+    .chat-status-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(250,248,242,.06);
+      border-bottom: 1px solid rgba(250,248,242,.1);
+    }
+
+    .chat-status-indicator {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    .chat-status-indicator.offline { background: rgba(250,248,242,.25); }
+    .chat-status-indicator.thinking { background: var(--red); animation: chat-pulse 1s ease-in-out infinite; }
+
+    @keyframes chat-pulse { 0%,100% { opacity:1; } 50% { opacity:.35; } }
+
+    .chat-status-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: rgba(250,248,242,.55);
+    }
+
+    .chat-messages {
+      height: 360px;
+      overflow-y: auto;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      scroll-behavior: smooth;
+    }
+
+    .chat-message {
+      display: flex;
+      max-width: 85%;
+    }
+
+    .chat-message--assistant { align-self: flex-start; }
+    .chat-message--user { align-self: flex-end; flex-direction: row-reverse; }
+
+    .chat-message__bubble {
+      font-family: Rajdhani, sans-serif;
+      font-size: 0.97rem;
+      font-weight: 500;
+      line-height: 1.55;
+      padding: 10px 14px;
+      border-radius: 4px;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .chat-message--assistant .chat-message__bubble {
+      background: rgba(250,248,242,.08);
+      color: rgba(250,248,242,.9);
+      border: 1px solid rgba(250,248,242,.1);
+    }
+
+    .chat-message--user .chat-message__bubble {
+      background: var(--red);
+      color: var(--cream);
+    }
+
+    .chat-confirm-bar {
+      padding: 12px 16px;
+      border-top: 1px solid rgba(250,248,242,.1);
+      background: rgba(250,248,242,.04);
+    }
+
+    .chat-confirm-btn {
+      width: 100%;
+      min-height: 44px;
+      background: var(--red);
+      color: var(--cream);
+      font-family: Rajdhani, sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: .06em;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background .15s;
+    }
+
+    .chat-confirm-btn:hover { background: var(--red2); }
+    .chat-confirm-btn:disabled { opacity: .5; cursor: not-allowed; }
+
+    .chat-input-area {
+      display: flex;
+      gap: 8px;
+      padding: 12px 16px;
+      border-top: 1px solid rgba(250,248,242,.1);
+      align-items: flex-end;
+    }
+
+    .chat-input {
+      flex: 1;
+      min-height: 44px;
+      background: rgba(250,248,242,.06);
+      border: 1px solid rgba(250,248,242,.12);
+      border-radius: 4px;
+      color: var(--cream);
+      font-family: Rajdhani, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 10px 12px;
+      outline: none;
+      resize: none;
+      transition: border-color .15s;
+    }
+
+    .chat-input::placeholder { color: rgba(250,248,242,.25); }
+    .chat-input:focus { border-color: var(--red); }
+    .chat-input:disabled { opacity: .5; cursor: not-allowed; }
+
+    .chat-send-btn {
+      min-width: 44px;
+      min-height: 44px;
+      background: var(--red);
+      color: var(--cream);
+      font-family: Rajdhani, sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: .06em;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background .15s;
+      padding: 0 16px;
+    }
+
+    .chat-send-btn:hover { background: var(--red2); }
+    .chat-send-btn:disabled { opacity: .5; cursor: not-allowed; }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
+    }
 
     /* ─── FOOTER ─── */
     footer {
@@ -775,8 +857,12 @@
       .hero-stats { gap: 28px; margin-top: 48px; padding-top: 28px; }
       .about-grid { grid-template-columns: 1fr; gap: 40px; }
       .contact-grid { grid-template-columns: 1fr; gap: 40px; }
-      .form-row { grid-template-columns: 1fr; }
       section { padding: 64px 6%; }
+      .chat-messages { height: 280px; }
+    }
+
+    @media (max-width: 375px) {
+      .chat-messages { height: 240px; }
     }
   </style>
 </head>
@@ -1025,49 +1111,25 @@
   <!-- CONTACT -->
   <section id="contact">
     <span class="section-label">Get in Touch</span>
-    <h2>Ready to Source?</h2>
-    <p class="section-sub">Tell us what you need and we'll come back with a full landed-cost estimate within 48 hours.</p>
+    <h2>Start Your Enquiry</h2>
+    <p class="section-sub">Tell our AI trade assistant what you need — it'll gather the details and connect you with the FPM team.</p>
     <div class="contact-grid">
 
-      <form class="contact-form" id="contactForm">
-        <input type="hidden" id="workerUrl" value="https://holy-smoke-922f.cachafpm.workers.dev" />
-        <input type="hidden" name="access_key" value="68f8c9d3-17eb-47d4-a85b-7b65aedc2310" />
-        <input type="hidden" name="subject" value="New enquiry from fpmsg.co.uk" />
-        <input type="hidden" name="from_name" value="FPM International Website" />
-        <div class="form-row">
-          <div class="form-group">
-            <label>Your Name</label>
-            <input type="text" name="name" placeholder="Full name" required />
-          </div>
-          <div class="form-group">
-            <label>Company</label>
-            <input type="text" name="company" placeholder="Company name" />
-          </div>
+      <div class="chat-panel" id="chat-panel" role="region" aria-label="AI Trade Enquiry Assistant">
+        <div class="chat-status-bar">
+          <span class="chat-status-indicator" id="chat-status-indicator" aria-hidden="true"></span>
+          <span class="chat-status-label" id="chat-status-label">AI Assistant — Online</span>
         </div>
-        <div class="form-group">
-          <label>Email Address</label>
-          <input type="email" name="email" placeholder="your@email.com" required />
+        <div class="chat-messages" id="chat-messages" role="log" aria-live="polite" aria-label="Conversation"></div>
+        <div class="chat-confirm-bar" id="chat-confirm-bar" hidden>
+          <button class="chat-confirm-btn" id="chat-confirm-btn" type="button">Confirm and Send Enquiry</button>
         </div>
-        <div class="form-group">
-          <label>Service Needed</label>
-          <select name="service" required>
-            <option value="" disabled selected>Select a service&hellip;</option>
-            <option>Global Sourcing</option>
-            <option>Freight &amp; Shipping</option>
-            <option>Procurement Management</option>
-            <option>Caribbean Market Supply</option>
-            <option>Full End-to-End Service</option>
-            <option>Other / Not Sure</option>
-          </select>
+        <div class="chat-input-area">
+          <label for="chat-input" class="sr-only">Your message</label>
+          <textarea class="chat-input" id="chat-input" rows="2" placeholder="Type your message…" maxlength="500" autocomplete="off"></textarea>
+          <button class="chat-send-btn" id="chat-send" type="button" aria-label="Send message">Send</button>
         </div>
-        <div class="form-group">
-          <label>Tell Us What You Need</label>
-          <textarea name="message" placeholder="Product type, quantity, destination, timeline&hellip;"></textarea>
-        </div>
-        <button type="submit" class="btn-submit">Send Enquiry &rarr;</button>
-        <p class="form-notice">We respond within 48 hours. Your enquiry is processed securely and never passed to third parties without your consent.</p>
-        <div id="formMsg"></div>
-      </form>
+      </div>
 
       <div class="contact-info">
         <div class="ci-item">
@@ -1080,7 +1142,7 @@
         </div>
         <div class="ci-item">
           <div class="ci-label">Response Time</div>
-          <div class="ci-value">Within 48 hours, Mon&ndash;Fri</div>
+          <div class="ci-value">Within one business day, Mon&ndash;Fri</div>
         </div>
         <div class="ci-item">
           <div class="ci-label">Operating Regions</div>
@@ -1125,50 +1187,335 @@
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade-in').forEach(function (el) { io.observe(el); });
 
-    // Contact form — submits via Cloudflare Worker to Web3Forms
-    var form = document.getElementById('contactForm');
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
+    // AI Chat Assistant
+    (function () {
+      var WORKER_URL = 'https://holy-smoke-922f.cachafpm.workers.dev';
+      var CHAT_ENDPOINT = WORKER_URL + '/api/chat';
+      var SUBMIT_ENDPOINT = WORKER_URL + '/submit';
+      var WEB3FORMS_KEY = '68f8c9d3-17eb-47d4-a85b-7b65aedc2310';
+      var CHAT_MODEL = 'claude-haiku-4-5-20251001';
+      var MAX_TOKENS = 300;
+      var MAX_MESSAGES = 20;
+      var SENTINEL_READY = '[CONTACT_READY]';
+      var SENTINEL_CLOSED = '[FLOW_CLOSED]';
 
-      var workerUrl = document.getElementById('workerUrl').value;
-      var btn = form.querySelector('.btn-submit');
-      btn.disabled = true;
-      btn.textContent = 'Sending…';
+      var SYSTEM_PROMPT = `You are FPM's digital trade assistant — B2B sourcing for Caribbean markets (Barbados, CARICOM). Quotes in BBD/USD.
 
-      var data = {};
-      new FormData(form).forEach(function (v, k) { data[k] = v; });
+CATEGORIES (HS-aligned, Ch.84–90):
+1. Food Processing & Hospitality Equipment — juicers, catering machinery
+2. Refrigeration & Cold Chain — walk-in chillers, solar freezers, display refrigeration
+3. Materials Handling — pallet jacks, hand trucks
+4. Measurement & Weighing — platform scales, industrial weighing
+5. Electrical & Lighting — LED, solar-powered luminaires
+6. Construction & Shopfitting — PVC foam board, display systems, shelving
+7. Agricultural Supplies & Packaging — mesh bags, agricultural packaging
+8. Electronics & Surveillance — security cameras, commercial electronics
 
-      fetch(workerUrl + '/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      })
-        .then(function (r) { return r.json(); })
-        .then(function (d) {
-          if (d.success) {
-            showMsg('success', 'Enquiry received — we\'ll be in touch within 48 hours.');
-            form.reset();
-          } else {
-            showMsg('error', 'Something went wrong — please email us directly at info@fpmsg.co.uk');
+For each category, compliance requirements (CE marking, F-Gas, food safety, fire certificates) are things FPM is aware of — not guarantees you can make.
+
+RULES:
+- Not a human. If asked, confirm digital assistant only. Never name the AI model or provider.
+- Never commit to a specific delivery lead time.
+- Out-of-scope product: say "While we can't take this on directly, please email info@fpmsg.co.uk and we'll do our best to point you in the right direction." Emit [FLOW_CLOSED].
+- Unsupported/sanctioned destination: say "Unfortunately this destination is outside our current operating scope. While we can't take this on directly, please email info@fpmsg.co.uk and we'll do our best to point you in the right direction." Do not name it as sanctioned. Emit [FLOW_CLOSED].
+- Collect 6 data points one at a time, skipping already-provided: (1) product type, (2) quantity, (3) destination, (4) timeframe, (5) budget, (6) urgency ("Is this time-sensitive?").
+- If vague: one specific clarifying follow-up, then accept and move on. Never repeat a covered question.
+- If multiple data points in one message: acknowledge all, skip covered questions.
+- Normalise: quantities ("about twenty" → "20 (approx)"), budgets ("fifty grand" → "USD 50,000 (approx)"), timelines ("next year" → "Q3/Q4 2026 (approx)").
+- When all 6 collected: emit [CONTACT_READY] on its own line. Next turn display verbatim: "Your details will be shared with FPM International to process your enquiry. See our privacy notice for details." Then ask for name, then email.
+- If prospect declines email: emit [FLOW_CLOSED] and say "No problem — whenever you're ready, reach us at info@fpmsg.co.uk. We'd be glad to help."
+- Replies: max 2 short paragraphs or 3 bullets per turn.`;
+
+      var OPENING_MESSAGE = "Hello — I'm FPM's digital trade assistant. We source commercial and industrial equipment for businesses across Barbados and the Caribbean: refrigeration, food processing machinery, materials handling, lighting, shelving, and more.\n\nTell me about what you're looking to source and I'll help you get started.";
+
+      var FALLBACK_MESSAGE = "I'm sorry, I'm having trouble connecting right now. Please try again in a moment, or contact our team directly at info@fpmsg.co.uk — we'll be happy to help.";
+
+      var CLOSING_MESSAGE = "Thank you — your enquiry has been sent to the FPM team. We'll review your requirements and come back with confirmation of how we can help and the next steps for your enquiry. You can expect a response within one business day, Mon–Fri, to the email address you provided. If you need to reach us in the meantime, you can also email info@fpmsg.co.uk.";
+
+      var CLOSING_MESSAGE_NO_EMAIL = "No problem — whenever you're ready, you can reach the FPM team directly at info@fpmsg.co.uk. We'd be glad to help.";
+
+      var state = {
+        messages: [],
+        lead: {
+          product: null,
+          quantity: null,
+          destination: null,
+          timeframe: null,
+          budget: null,
+          urgency: 'not_specified',
+          contactName: null,
+          contactEmail: null,
+          gdprAcknowledged: false,
+          submittedAt: null
+        },
+        phase: '',
+        sessionId: '',
+        startedAt: null
+      };
+
+      function relativeTs() {
+        return Math.round((Date.now() - state.startedAt) / 1000);
+      }
+
+      function fmtTs(secs) {
+        var m = Math.floor(secs / 60);
+        var s = secs % 60;
+        return '[' + (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s + ']';
+      }
+
+      function renderMessage(role, text) {
+        var log = document.getElementById('chat-messages');
+        var wrap = document.createElement('div');
+        wrap.className = 'chat-message chat-message--' + role;
+        wrap.setAttribute('data-role', role);
+        var bubble = document.createElement('span');
+        bubble.className = 'chat-message__bubble';
+        bubble.textContent = text;
+        wrap.appendChild(bubble);
+        log.appendChild(wrap);
+        log.scrollTop = log.scrollHeight;
+      }
+
+      function setStatus(status) {
+        var ind = document.getElementById('chat-status-indicator');
+        var lbl = document.getElementById('chat-status-label');
+        ind.className = 'chat-status-indicator';
+        if (status === 'thinking') {
+          ind.classList.add('thinking');
+          lbl.textContent = 'AI Assistant — Thinking…';
+        } else if (status === 'offline') {
+          ind.classList.add('offline');
+          lbl.textContent = 'AI Assistant — Offline';
+        } else {
+          lbl.textContent = 'AI Assistant — Online';
+        }
+      }
+
+      function updatePhase(newPhase) {
+        var order = ['qualifying', 'contact_capture', 'escalation', 'closed'];
+        var cur = order.indexOf(state.phase);
+        var next = order.indexOf(newPhase);
+        if (next < cur) throw new Error('Phase regression: ' + state.phase + ' → ' + newPhase);
+        if (next === cur) return;
+        state.phase = newPhase;
+        if (newPhase === 'contact_capture') {
+          state.lead.gdprAcknowledged = true;
+        }
+        if (newPhase === 'escalation') {
+          var bar = document.getElementById('chat-confirm-bar');
+          if (bar) bar.hidden = false;
+        }
+        if (newPhase === 'closed') {
+          var inp = document.getElementById('chat-input');
+          var btn = document.getElementById('chat-send');
+          if (inp) inp.disabled = true;
+          if (btn) btn.disabled = true;
+          var bar2 = document.getElementById('chat-confirm-bar');
+          if (bar2) bar2.hidden = true;
+        }
+      }
+
+      function extractContactData(userText) {
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        var trimmed = userText.trim();
+        if (!state.lead.contactName) {
+          if (trimmed.length > 0 && trimmed.length < 80) {
+            state.lead.contactName = trimmed;
           }
-        })
-        .catch(function () {
-          showMsg('error', 'Network error — please email us directly at info@fpmsg.co.uk');
-        })
-        .finally(function () {
-          btn.disabled = false;
-          btn.textContent = 'Send Enquiry →';
-        });
-    });
+        } else if (!state.lead.contactEmail) {
+          var match = trimmed.match(/[^\s@]+@[^\s@]+\.[^\s@]+/);
+          if (match && emailRegex.test(match[0])) {
+            state.lead.contactEmail = match[0];
+          }
+        }
+      }
 
-    function showMsg(type, text) {
-      var msg = document.getElementById('formMsg');
-      msg.style.display = 'block';
-      msg.style.background = type === 'success' ? 'rgba(200,49,46,.12)' : 'rgba(255,80,80,.1)';
-      msg.style.border = '1px solid ' + (type === 'success' ? 'rgba(200,49,46,.3)' : 'rgba(255,80,80,.3)');
-      msg.style.color = type === 'success' ? '#e03c39' : '#ff8080';
-      msg.innerHTML = text;
-    }
+      function buildLeadPayload() {
+        var lines = [];
+        state.messages.forEach(function (m) {
+          var secs = Math.round((m.ts - state.startedAt) / 1000);
+          lines.push(fmtTs(secs) + ' ' + m.role.toUpperCase() + ': ' + m.content);
+        });
+        state.lead.submittedAt = new Date().toISOString();
+        return {
+          access_key: WEB3FORMS_KEY,
+          from_name: 'FPM International Website',
+          subject: 'New AI Chat Enquiry — ' + (state.lead.contactName || 'Unknown'),
+          replyto: state.lead.contactEmail || '',
+          lead: {
+            product: state.lead.product,
+            quantity: state.lead.quantity,
+            destination: state.lead.destination,
+            timeframe: state.lead.timeframe,
+            budget: state.lead.budget,
+            urgency: state.lead.urgency,
+            contactName: state.lead.contactName,
+            contactEmail: state.lead.contactEmail,
+            sessionId: state.sessionId,
+            submittedAt: state.lead.submittedAt
+          },
+          transcript: lines.join('\n')
+        };
+      }
+
+      function submitTranscript() {
+        var payload = buildLeadPayload();
+        return fetch(SUBMIT_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+      }
+
+      function showFallback() {
+        setStatus('offline');
+        renderMessage('assistant', FALLBACK_MESSAGE);
+      }
+
+      function callWorker(messages) {
+        var controller = new AbortController();
+        var timer = setTimeout(function () { controller.abort(); }, 10000);
+
+        var stripped = messages.map(function (m) {
+          return { role: m.role, content: m.content };
+        });
+
+        var headers = { 'Content-Type': 'application/json' };
+        if (state.sessionId) headers['X-Session-ID'] = state.sessionId;
+
+        return fetch(CHAT_ENDPOINT, {
+          method: 'POST',
+          headers: headers,
+          signal: controller.signal,
+          body: JSON.stringify({
+            messages: stripped,
+            system: SYSTEM_PROMPT,
+            model: CHAT_MODEL,
+            max_tokens: MAX_TOKENS
+          })
+        }).then(function (r) {
+          clearTimeout(timer);
+          if (!r.ok) throw new Error('HTTP ' + r.status);
+          return r.json();
+        }).then(function (d) {
+          if (d.session_id && !state.sessionId) state.sessionId = d.session_id;
+          return d.content;
+        });
+      }
+
+      function handleSend() {
+        var inp = document.getElementById('chat-input');
+        var text = (inp.value || '').trim();
+        if (!text || state.phase === 'closed') return;
+        inp.value = '';
+        sendMessage(text);
+      }
+
+      function sendMessage(text) {
+        var ts = Date.now();
+        state.messages.push({ role: 'user', content: text, ts: ts });
+        if (state.messages.length > MAX_MESSAGES) {
+          state.messages = state.messages.slice(-MAX_MESSAGES);
+        }
+        renderMessage('user', text);
+
+        if (state.phase === 'contact_capture') {
+          extractContactData(text);
+        }
+
+        var inp = document.getElementById('chat-input');
+        var btn = document.getElementById('chat-send');
+        if (inp) inp.disabled = true;
+        if (btn) btn.disabled = true;
+        setStatus('thinking');
+
+        callWorker(state.messages).then(function (responseText) {
+          setStatus('online');
+
+          var hasClosed = responseText.indexOf(SENTINEL_CLOSED) !== -1;
+          var hasReady = responseText.indexOf(SENTINEL_READY) !== -1;
+
+          var cleaned = responseText
+            .replace(/\[FLOW_CLOSED\]/g, '')
+            .replace(/\[CONTACT_READY\]/g, '')
+            .trim();
+
+          var aTs = Date.now();
+          state.messages.push({ role: 'assistant', content: responseText, ts: aTs });
+
+          if (cleaned) renderMessage('assistant', cleaned);
+
+          if (hasClosed) {
+            try { updatePhase('closed'); } catch (e) {}
+            submitTranscript().catch(function () {});
+            renderMessage('assistant', CLOSING_MESSAGE_NO_EMAIL);
+            return;
+          }
+
+          if (hasReady) {
+            try { updatePhase('contact_capture'); } catch (e) {}
+          }
+
+          if (state.phase === 'contact_capture' && state.lead.contactName && state.lead.contactEmail) {
+            try { updatePhase('escalation'); } catch (e) {}
+          }
+
+        }).catch(function () {
+          setStatus('online');
+          showFallback();
+        }).finally(function () {
+          if (state.phase !== 'closed') {
+            var inp2 = document.getElementById('chat-input');
+            var btn2 = document.getElementById('chat-send');
+            if (inp2) inp2.disabled = false;
+            if (btn2) btn2.disabled = false;
+            if (inp2) inp2.focus();
+          }
+        });
+      }
+
+      function initChat() {
+        state.startedAt = Date.now();
+        state.phase = 'qualifying';
+
+        var inp = document.getElementById('chat-input');
+        var btn = document.getElementById('chat-send');
+        var confirmBtn = document.getElementById('chat-confirm-btn');
+
+        if (btn) btn.addEventListener('click', handleSend);
+        if (inp) {
+          inp.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+              e.preventDefault();
+              handleSend();
+            }
+          });
+        }
+        if (confirmBtn) {
+          confirmBtn.addEventListener('click', function () {
+            confirmBtn.disabled = true;
+            submitTranscript().then(function () {
+              try { updatePhase('closed'); } catch (e) {}
+              var bar = document.getElementById('chat-confirm-bar');
+              if (bar) bar.hidden = true;
+              renderMessage('assistant', CLOSING_MESSAGE);
+            }).catch(function () {
+              renderMessage('assistant', FALLBACK_MESSAGE);
+              confirmBtn.disabled = false;
+            });
+          });
+        }
+
+        setStatus('online');
+        renderMessage('assistant', OPENING_MESSAGE);
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initChat);
+      } else {
+        initChat();
+      }
+    })();
   </script>
 </body>
 </html>

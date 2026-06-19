@@ -2,12 +2,13 @@
  * FPM International — Cloudflare Worker
  *
  * Routes:
- *   POST /submit      — contact form → Web3Forms
+ *   POST /submit      — contact form / chat lead → Web3Forms
  *   POST /api/chat    — AI assistant → Anthropic (key never leaves this Worker)
  *   OPTIONS *         — CORS preflight
  *
  * Environment variables (set in Cloudflare dashboard, never in source):
  *   ANTHROPIC_API_KEY  — Anthropic API key
+ *   CHAT_MODEL         — optional model override (default: claude-haiku-4-5-20251001)
  */
 
 const ALLOWED_ORIGINS = [
@@ -20,7 +21,7 @@ function corsHeaders(origin) {
   return {
     'Access-Control-Allow-Origin': allowed,
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Allow-Headers': 'Content-Type, X-Session-ID',
   };
 }
 
@@ -50,6 +51,10 @@ async function handleForm(request, origin) {
   try {
     const body = await request.json();
 
+    if (!body.access_key) {
+      return json({ success: false, message: 'Missing access_key' }, 400, origin);
+    }
+
     const res = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -71,6 +76,24 @@ async function handleChat(request, env, origin) {
   try {
     const body = await request.json();
 
+    if (!body.messages || !Array.isArray(body.messages)) {
+      return json({ error: 'messages must be an array' }, 400, origin);
+    }
+    if (body.messages.length > 20) {
+      return json({ error: 'messages exceeds limit of 20' }, 400, origin);
+    }
+
+    const sessionId = request.headers.get('X-Session-ID') || crypto.randomUUID();
+    const model = env.CHAT_MODEL ?? body.model ?? 'claude-haiku-4-5-20251001';
+    const maxTokens = Math.min(body.max_tokens ?? 300, 300);
+
+    const anthropicBody = {
+      model,
+      max_tokens: maxTokens,
+      messages: body.messages,
+    };
+    if (body.system) anthropicBody.system = body.system;
+
     const res = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: {
@@ -78,11 +101,20 @@ async function handleChat(request, env, origin) {
         'anthropic-version': '2023-06-01',
         'content-type': 'application/json',
       },
-      body: JSON.stringify(body),
+      body: JSON.stringify(anthropicBody),
     });
 
+    if (!res.ok) {
+      const status = res.status === 429 ? 429 : 500;
+      return json({ error: 'Upstream error' }, status, origin);
+    }
+
     const data = await res.json();
-    return json(data, res.status, origin);
+    return json(
+      { content: data.content[0].text, session_id: sessionId },
+      200,
+      origin
+    );
   } catch {
     return json({ error: 'AI proxy error' }, 500, origin);
   }
