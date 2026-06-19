@@ -70,28 +70,24 @@ async function handleForm(request, origin) {
 
 async function handleChat(request, env, origin) {
   if (!env.ANTHROPIC_API_KEY) {
-    return json({ error: 'AI not configured' }, 503, origin);
+    return json({ error: 'Service temporarily unavailable.' }, 503, origin);
   }
 
   try {
     const body = await request.json();
 
     if (!body.messages || !Array.isArray(body.messages)) {
-      return json({ error: 'messages must be an array' }, 400, origin);
+      return json({ error: 'Bad request: messages must be an array' }, 400, origin);
     }
     if (body.messages.length > 20) {
-      return json({ error: 'messages exceeds limit of 20' }, 400, origin);
+      return json({ error: 'Bad request: messages exceeds limit of 20' }, 400, origin);
     }
 
-    const sessionId = request.headers.get('X-Session-ID') || crypto.randomUUID();
-    const model = env.CHAT_MODEL ?? body.model ?? 'claude-haiku-4-5-20251001';
-    const maxTokens = Math.min(body.max_tokens ?? 300, 300);
+    const sessionId  = request.headers.get('X-Session-ID') || crypto.randomUUID();
+    const model      = env.CHAT_MODEL ?? body.model ?? 'claude-haiku-4-5-20251001';
+    const maxTokens  = Math.min(body.max_tokens ?? 300, 300);
 
-    const anthropicBody = {
-      model,
-      max_tokens: maxTokens,
-      messages: body.messages,
-    };
+    const anthropicBody = { model, max_tokens: maxTokens, messages: body.messages };
     if (body.system) anthropicBody.system = body.system;
 
     const res = await fetch('https://api.anthropic.com/v1/messages', {
@@ -105,18 +101,16 @@ async function handleChat(request, env, origin) {
     });
 
     if (!res.ok) {
-      const status = res.status === 429 ? 429 : 500;
-      return json({ error: 'Upstream error' }, status, origin);
+      if (res.status === 429) {
+        return json({ error: 'Rate limit exceeded. Please wait a moment and try again.' }, 429, origin);
+      }
+      return json({ error: 'Service error. Please contact info@fpmsg.co.uk.' }, 500, origin);
     }
 
     const data = await res.json();
-    return json(
-      { content: data.content[0].text, session_id: sessionId },
-      200,
-      origin
-    );
+    return json({ content: data.content[0].text, session_id: sessionId }, 200, origin);
   } catch {
-    return json({ error: 'AI proxy error' }, 500, origin);
+    return json({ error: 'Service error. Please contact info@fpmsg.co.uk.' }, 500, origin);
   }
 }
 

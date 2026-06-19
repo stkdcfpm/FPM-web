@@ -28,7 +28,6 @@
       line-height: 1.6;
     }
 
-    /* ─── TYPE ─── */
     .mono-tag {
       font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
@@ -69,7 +68,7 @@
 
     section { padding: 88px 6%; }
 
-    /* ─── NAV ─── */
+    /* NAV */
     nav {
       position: sticky;
       top: 0;
@@ -83,12 +82,7 @@
       height: 64px;
     }
 
-    .nav-logo {
-      text-decoration: none;
-      display: flex;
-      align-items: baseline;
-      gap: 10px;
-    }
+    .nav-logo { text-decoration: none; display: flex; align-items: baseline; gap: 10px; }
 
     .nav-logo-mark {
       font-family: Rajdhani, sans-serif;
@@ -111,11 +105,7 @@
       margin-left: 2px;
     }
 
-    .nav-links {
-      display: flex;
-      gap: 36px;
-      list-style: none;
-    }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
 
     .nav-links a {
       font-family: Rajdhani, sans-serif;
@@ -151,15 +141,9 @@
       padding: 4px;
     }
 
-    .nav-toggle span {
-      display: block;
-      width: 22px;
-      height: 2px;
-      background: var(--ink);
-      border-radius: 1px;
-    }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--ink); border-radius: 1px; }
 
-    /* ─── HERO ─── */
+    /* HERO */
     .hero {
       min-height: 92vh;
       display: flex;
@@ -239,11 +223,7 @@
       margin-bottom: 36px;
     }
 
-    .hero-actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
 
     .btn-primary {
       display: inline-block;
@@ -307,7 +287,7 @@
       margin-top: 5px;
     }
 
-    /* ─── SERVICES ─── */
+    /* SERVICES */
     #services { background: #f0ede4; }
 
     .services-grid {
@@ -319,13 +299,7 @@
       overflow: hidden;
     }
 
-    .service-card {
-      background: var(--cream);
-      padding: 36px 30px;
-      transition: background .15s;
-      position: relative;
-    }
-
+    .service-card { background: var(--cream); padding: 36px 30px; transition: background .15s; position: relative; }
     .service-card:hover { background: #fff; }
 
     .service-num {
@@ -338,51 +312,14 @@
       display: block;
     }
 
-    .service-card h3 {
-      font-family: Rajdhani, sans-serif;
-      font-size: 1.25rem;
-      font-weight: 700;
-      letter-spacing: .02em;
-      margin-bottom: 12px;
-      color: var(--ink);
-    }
-
-    .service-card p {
-      font-size: 0.93rem;
-      font-weight: 500;
-      color: var(--muted);
-      line-height: 1.65;
-    }
-
-    .service-card ul {
-      list-style: none;
-      margin-top: 18px;
-    }
-
-    .service-card ul li {
-      font-size: 0.88rem;
-      font-weight: 500;
-      color: var(--muted);
-      padding: 5px 0;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
+    .service-card h3 { font-family: Rajdhani, sans-serif; font-size: 1.25rem; font-weight: 700; letter-spacing: .02em; margin-bottom: 12px; color: var(--ink); }
+    .service-card p { font-size: 0.93rem; font-weight: 500; color: var(--muted); line-height: 1.65; }
+    .service-card ul { list-style: none; margin-top: 18px; }
+    .service-card ul li { font-size: 0.88rem; font-weight: 500; color: var(--muted); padding: 5px 0; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; }
     .service-card ul li:last-child { border-bottom: none; }
+    .service-card ul li::before { content: ''; display: inline-block; width: 4px; height: 4px; border-radius: 50%; background: var(--red); flex-shrink: 0; }
 
-    .service-card ul li::before {
-      content: '';
-      display: inline-block;
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: var(--red);
-      flex-shrink: 0;
-    }
-
-    /* ─── HOW IT WORKS ─── */
+    /* HOW IT WORKS */
     #how { background: var(--cream); }
 
     .steps {
@@ -394,43 +331,15 @@
       overflow: hidden;
     }
 
-    .step {
-      padding: 36px 28px;
-      background: var(--cream);
-      transition: background .15s;
-    }
-
+    .step { padding: 36px 28px; background: var(--cream); transition: background .15s; }
     .step:hover { background: #fff; }
 
-    .step-num {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 28px;
-      font-weight: 600;
-      color: var(--red);
-      opacity: .35;
-      line-height: 1;
-      margin-bottom: 20px;
-    }
+    .step-num { font-family: 'JetBrains Mono', monospace; font-size: 28px; font-weight: 600; color: var(--red); opacity: .35; line-height: 1; margin-bottom: 20px; }
+    .step h4 { font-family: Rajdhani, sans-serif; font-size: 1.05rem; font-weight: 700; letter-spacing: .04em; margin-bottom: 8px; color: var(--ink); }
+    .step p { font-size: 0.88rem; font-weight: 500; color: var(--muted); line-height: 1.6; }
 
-    .step h4 {
-      font-family: Rajdhani, sans-serif;
-      font-size: 1.05rem;
-      font-weight: 700;
-      letter-spacing: .04em;
-      margin-bottom: 8px;
-      color: var(--ink);
-    }
-
-    .step p {
-      font-size: 0.88rem;
-      font-weight: 500;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    /* ─── PRODUCTS ─── */
+    /* PRODUCTS */
     #products { background: var(--ink); color: var(--cream); }
-
     #products .section-label { color: var(--red); }
     #products h2 { color: var(--cream); }
     #products .section-sub { color: rgba(250,248,242,.55); }
@@ -444,34 +353,12 @@
       overflow: hidden;
     }
 
-    .product-tag {
-      background: rgba(250,248,242,.04);
-      padding: 24px 20px;
-      transition: background .15s;
-      cursor: default;
-    }
-
+    .product-tag { background: rgba(250,248,242,.04); padding: 24px 20px; transition: background .15s; cursor: default; }
     .product-tag:hover { background: rgba(200,49,46,.12); }
+    .product-tag-name { font-family: Rajdhani, sans-serif; font-size: 0.97rem; font-weight: 600; color: rgba(250,248,242,.85); letter-spacing: .03em; }
+    .product-tag-cat { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 600; letter-spacing: .25em; color: rgba(200,49,46,.8); text-transform: uppercase; margin-bottom: 6px; }
 
-    .product-tag-name {
-      font-family: Rajdhani, sans-serif;
-      font-size: 0.97rem;
-      font-weight: 600;
-      color: rgba(250,248,242,.85);
-      letter-spacing: .03em;
-    }
-
-    .product-tag-cat {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 9px;
-      font-weight: 600;
-      letter-spacing: .25em;
-      color: rgba(200,49,46,.8);
-      text-transform: uppercase;
-      margin-bottom: 6px;
-    }
-
-    /* ─── CORRIDORS ─── */
+    /* CORRIDORS */
     #corridors { background: #f0ede4; }
 
     .corridor-grid {
@@ -483,141 +370,45 @@
       overflow: hidden;
     }
 
-    .corridor-card {
-      background: var(--cream);
-      padding: 32px 28px;
-      transition: background .15s;
-    }
-
+    .corridor-card { background: var(--cream); padding: 32px 28px; transition: background .15s; }
     .corridor-card:hover { background: #fff; }
+    .corridor-from-to { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600; letter-spacing: .3em; color: var(--red); text-transform: uppercase; margin-bottom: 12px; }
+    .corridor-card h4 { font-family: Rajdhani, sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: 10px; }
+    .corridor-card p { font-size: 0.9rem; font-weight: 500; color: var(--muted); line-height: 1.65; }
 
-    .corridor-from-to {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: .3em;
-      color: var(--red);
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-
-    .corridor-card h4 {
-      font-family: Rajdhani, sans-serif;
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--ink);
-      margin-bottom: 10px;
-    }
-
-    .corridor-card p {
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--muted);
-      line-height: 1.65;
-    }
-
-    /* ─── ABOUT ─── */
+    /* ABOUT */
     #about { background: var(--cream); }
 
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 72px;
-      align-items: start;
-    }
-
-    .about-text p {
-      font-size: 0.97rem;
-      font-weight: 500;
-      color: var(--muted);
-      line-height: 1.8;
-      margin-bottom: 18px;
-    }
-
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+    .about-text p { font-size: 0.97rem; font-weight: 500; color: var(--muted); line-height: 1.8; margin-bottom: 18px; }
     .about-text strong { color: var(--ink); font-weight: 700; }
 
     .credentials { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
-
-    .credential {
-      padding: 20px 24px;
-      border-bottom: 1px solid var(--border);
-      background: var(--cream);
-      transition: background .15s;
-    }
-
+    .credential { padding: 20px 24px; border-bottom: 1px solid var(--border); background: var(--cream); transition: background .15s; }
     .credential:last-child { border-bottom: none; }
     .credential:hover { background: #fff; }
+    .credential-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 600; letter-spacing: .28em; text-transform: uppercase; color: var(--red); margin-bottom: 4px; }
+    .credential-value { font-family: Rajdhani, sans-serif; font-size: 1rem; font-weight: 700; color: var(--ink); }
+    .credential-detail { font-size: 0.83rem; font-weight: 500; color: var(--muted); margin-top: 2px; }
 
-    .credential-label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 9px;
-      font-weight: 600;
-      letter-spacing: .28em;
-      text-transform: uppercase;
-      color: var(--red);
-      margin-bottom: 4px;
-    }
-
-    .credential-value {
-      font-family: Rajdhani, sans-serif;
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--ink);
-    }
-
-    .credential-detail {
-      font-size: 0.83rem;
-      font-weight: 500;
-      color: var(--muted);
-      margin-top: 2px;
-    }
-
-    /* ─── CONTACT ─── */
+    /* CONTACT */
     #contact { background: var(--ink); color: var(--cream); }
-
     #contact h2 { color: var(--cream); }
     #contact .section-sub { color: rgba(250,248,242,.55); }
     #contact .section-label { color: var(--red); }
 
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 72px;
-      align-items: start;
-    }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
 
     .contact-info { display: flex; flex-direction: column; gap: 0; padding-top: 8px; }
 
-    .ci-item {
-      padding: 20px 0;
-      border-bottom: 1px solid rgba(250,248,242,.08);
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
+    .ci-item { padding: 20px 0; border-bottom: 1px solid rgba(250,248,242,.08); display: flex; flex-direction: column; gap: 4px; }
     .ci-item:last-child { border-bottom: none; }
-
-    .ci-label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 9px;
-      font-weight: 600;
-      letter-spacing: .3em;
-      text-transform: uppercase;
-      color: var(--red);
-    }
-
-    .ci-value {
-      font-family: Rajdhani, sans-serif;
-      font-size: 1rem;
-      font-weight: 600;
-      color: rgba(250,248,242,.85);
-    }
-
+    .ci-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 600; letter-spacing: .3em; text-transform: uppercase; color: var(--red); }
+    .ci-value { font-family: Rajdhani, sans-serif; font-size: 1rem; font-weight: 600; color: rgba(250,248,242,.85); }
     .ci-value a { color: inherit; text-decoration: none; }
     .ci-value a:hover { color: var(--cream); }
 
-    /* ─── CHAT PANEL ─── */
+    /* CHAT PANEL */
     .chat-panel {
       width: 100%;
       display: flex;
@@ -648,6 +439,7 @@
 
     .chat-status-indicator.offline { background: rgba(250,248,242,.25); }
     .chat-status-indicator.thinking { background: var(--red); animation: chat-pulse 1s ease-in-out infinite; }
+    .chat-status-indicator.error { background: var(--red); }
 
     @keyframes chat-pulse { 0%,100% { opacity:1; } 50% { opacity:.35; } }
 
@@ -670,11 +462,7 @@
       scroll-behavior: smooth;
     }
 
-    .chat-message {
-      display: flex;
-      max-width: 85%;
-    }
-
+    .chat-message { display: flex; max-width: 85%; }
     .chat-message--assistant { align-self: flex-start; }
     .chat-message--user { align-self: flex-end; flex-direction: row-reverse; }
 
@@ -783,7 +571,7 @@
       border: 0;
     }
 
-    /* ─── FOOTER ─── */
+    /* FOOTER */
     footer {
       background: #050507;
       color: rgba(250,248,242,.35);
@@ -795,51 +583,18 @@
       gap: 12px;
     }
 
-    .footer-logo {
-      font-family: Rajdhani, sans-serif;
-      font-weight: 700;
-      font-size: 16px;
-      letter-spacing: -.01em;
-    }
-
+    .footer-logo { font-family: Rajdhani, sans-serif; font-weight: 700; font-size: 16px; letter-spacing: -.01em; }
     .footer-logo .m { color: var(--red); }
-
-    .footer-links {
-      display: flex;
-      gap: 24px;
-    }
-
-    .footer-links a {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: .2em;
-      color: rgba(250,248,242,.4);
-      text-decoration: none;
-      text-transform: uppercase;
-      transition: color .15s;
-    }
-
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600; letter-spacing: .2em; color: rgba(250,248,242,.4); text-decoration: none; text-transform: uppercase; transition: color .15s; }
     .footer-links a:hover { color: var(--red); }
+    .footer-reg { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: .1em; color: rgba(250,248,242,.25); }
 
-    .footer-reg {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: .1em;
-      color: rgba(250,248,242,.25);
-    }
-
-    /* ─── FADE-IN ─── */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(16px);
-      transition: opacity .5s ease, transform .5s ease;
-    }
-
+    /* FADE-IN */
+    .fade-in { opacity: 0; transform: translateY(16px); transition: opacity .5s ease, transform .5s ease; }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-    /* ─── RESPONSIVE ─── */
+    /* RESPONSIVE */
     @media (max-width: 768px) {
       .nav-links { display: none; flex-direction: column; }
       .nav-links.open {
@@ -926,7 +681,6 @@
     <h2>End-to-End Trade Services</h2>
     <p class="section-sub">From finding the right manufacturer to delivering goods to your destination, we manage every step.</p>
     <div class="services-grid">
-
       <div class="service-card fade-in">
         <span class="service-num">01</span>
         <h3>Global Sourcing</h3>
@@ -938,7 +692,6 @@
           <li>Certificate &amp; compliance verification</li>
         </ul>
       </div>
-
       <div class="service-card fade-in">
         <span class="service-num">02</span>
         <h3>Freight &amp; Shipping</h3>
@@ -950,7 +703,6 @@
           <li>Dangerous goods (DG) coordination</li>
         </ul>
       </div>
-
       <div class="service-card fade-in">
         <span class="service-num">03</span>
         <h3>Procurement Management</h3>
@@ -962,7 +714,6 @@
           <li>Proforma &amp; commercial invoice handling</li>
         </ul>
       </div>
-
       <div class="service-card fade-in">
         <span class="service-num">04</span>
         <h3>Caribbean Market Supply</h3>
@@ -974,7 +725,6 @@
           <li>Local market knowledge &amp; guidance</li>
         </ul>
       </div>
-
     </div>
   </section>
 
@@ -984,31 +734,11 @@
     <h2>How We Work</h2>
     <p class="section-sub">From first enquiry to goods delivered &mdash; five clear steps, no surprises.</p>
     <div class="steps">
-      <div class="step fade-in">
-        <div class="step-num">01</div>
-        <h4>Enquiry</h4>
-        <p>Tell us what you need &mdash; product, quantity, destination, timeline. We assess feasibility and costs.</p>
-      </div>
-      <div class="step fade-in">
-        <div class="step-num">02</div>
-        <h4>Sourcing</h4>
-        <p>We identify the right suppliers, verify credentials, and negotiate competitive terms on your behalf.</p>
-      </div>
-      <div class="step fade-in">
-        <div class="step-num">03</div>
-        <h4>Quotation</h4>
-        <p>A detailed landed-cost quote: goods, freight, insurance, duties, and our fee &mdash; fully itemised.</p>
-      </div>
-      <div class="step fade-in">
-        <div class="step-num">04</div>
-        <h4>Order &amp; Ship</h4>
-        <p>We place the PO, manage production, arrange freight, and keep you updated throughout transit.</p>
-      </div>
-      <div class="step fade-in">
-        <div class="step-num">05</div>
-        <h4>Delivered</h4>
-        <p>Goods arrive with full documentation. We handle any post-delivery queries or adjustments.</p>
-      </div>
+      <div class="step fade-in"><div class="step-num">01</div><h4>Enquiry</h4><p>Tell us what you need &mdash; product, quantity, destination, timeline. We assess feasibility and costs.</p></div>
+      <div class="step fade-in"><div class="step-num">02</div><h4>Sourcing</h4><p>We identify the right suppliers, verify credentials, and negotiate competitive terms on your behalf.</p></div>
+      <div class="step fade-in"><div class="step-num">03</div><h4>Quotation</h4><p>A detailed landed-cost quote: goods, freight, insurance, duties, and our fee &mdash; fully itemised.</p></div>
+      <div class="step fade-in"><div class="step-num">04</div><h4>Order &amp; Ship</h4><p>We place the PO, manage production, arrange freight, and keep you updated throughout transit.</p></div>
+      <div class="step fade-in"><div class="step-num">05</div><h4>Delivered</h4><p>Goods arrive with full documentation. We handle any post-delivery queries or adjustments.</p></div>
     </div>
   </section>
 
@@ -1039,26 +769,10 @@
     <h2>Where We Operate</h2>
     <p class="section-sub">Our active shipping corridors, expanding as the business grows.</p>
     <div class="corridor-grid">
-      <div class="corridor-card fade-in">
-        <div class="corridor-from-to">Primary Corridor</div>
-        <h4>China &rarr; Caribbean</h4>
-        <p>Sourcing from manufacturers in Guangzhou, Qingdao, Foshan, and surrounding regions &mdash; shipping to Barbados and the wider Caribbean.</p>
-      </div>
-      <div class="corridor-card fade-in">
-        <div class="corridor-from-to">UK Operations</div>
-        <h4>Brighton, United Kingdom</h4>
-        <p>Registered and operating from Brighton, UK. Full regulatory oversight, Companies House registration, transparent trade services.</p>
-      </div>
-      <div class="corridor-card fade-in">
-        <div class="corridor-from-to">Sourcing Reach</div>
-        <h4>Global Manufacturing</h4>
-        <p>While China is our core sourcing region, we source globally &mdash; connecting buyers to the right manufacturer wherever the product is best made.</p>
-      </div>
-      <div class="corridor-card fade-in">
-        <div class="corridor-from-to">Expanding</div>
-        <h4>UK &rarr; West Africa</h4>
-        <p>Developing UK&ndash;Nigeria and UK&ndash;Ghana corridors to serve West African buyers with the same reliable sourcing and freight service.</p>
-      </div>
+      <div class="corridor-card fade-in"><div class="corridor-from-to">Primary Corridor</div><h4>China &rarr; Caribbean</h4><p>Sourcing from manufacturers in Guangzhou, Qingdao, Foshan, and surrounding regions &mdash; shipping to Barbados and the wider Caribbean.</p></div>
+      <div class="corridor-card fade-in"><div class="corridor-from-to">UK Operations</div><h4>Brighton, United Kingdom</h4><p>Registered and operating from Brighton, UK. Full regulatory oversight, Companies House registration, transparent trade services.</p></div>
+      <div class="corridor-card fade-in"><div class="corridor-from-to">Sourcing Reach</div><h4>Global Manufacturing</h4><p>While China is our core sourcing region, we source globally &mdash; connecting buyers to the right manufacturer wherever the product is best made.</p></div>
+      <div class="corridor-card fade-in"><div class="corridor-from-to">Expanding</div><h4>UK &rarr; West Africa</h4><p>Developing UK&ndash;Nigeria and UK&ndash;Ghana corridors to serve West African buyers with the same reliable sourcing and freight service.</p></div>
     </div>
   </section>
 
@@ -1068,41 +782,17 @@
       <div class="about-text fade-in">
         <span class="section-label">About Us</span>
         <h2>A Trade Partner You Can Rely On</h2>
-        <p>
-          <strong>FPM International Ltd</strong> is a Brighton-based trade intermediary helping businesses source commercial goods from global manufacturers and get them delivered to Caribbean and international markets.
-        </p>
-        <p>
-          We bridge the gap between buyers and overseas suppliers &mdash; handling sourcing, procurement, freight logistics, and documentation so our clients can focus on their core business rather than navigating complex international trade.
-        </p>
-        <p>
-          With direct supplier relationships across China's key manufacturing regions and established freight networks into the Caribbean, we deliver goods efficiently, transparently, and at competitive landed costs.
-        </p>
-        <p>
-          Every quote includes a full breakdown of goods cost, freight, insurance, duties, and our fee. No hidden costs.
-        </p>
+        <p><strong>FPM International Ltd</strong> is a Brighton-based trade intermediary helping businesses source commercial goods from global manufacturers and get them delivered to Caribbean and international markets.</p>
+        <p>We bridge the gap between buyers and overseas suppliers &mdash; handling sourcing, procurement, freight logistics, and documentation so our clients can focus on their core business rather than navigating complex international trade.</p>
+        <p>With direct supplier relationships across China's key manufacturing regions and established freight networks into the Caribbean, we deliver goods efficiently, transparently, and at competitive landed costs.</p>
+        <p>Every quote includes a full breakdown of goods cost, freight, insurance, duties, and our fee. No hidden costs.</p>
       </div>
       <div class="about-credentials fade-in">
         <div class="credentials">
-          <div class="credential">
-            <div class="credential-label">Company Registration</div>
-            <div class="credential-value">FPM International Ltd</div>
-            <div class="credential-detail">Companies House &mdash; Registered May 2026</div>
-          </div>
-          <div class="credential">
-            <div class="credential-label">SIC 46190</div>
-            <div class="credential-value">Non-specialist wholesale trade</div>
-            <div class="credential-detail">Agents involved in the sale of a variety of goods</div>
-          </div>
-          <div class="credential">
-            <div class="credential-label">Headquarters</div>
-            <div class="credential-value">Brighton, United Kingdom</div>
-            <div class="credential-detail">Serving global buyers and Caribbean markets</div>
-          </div>
-          <div class="credential">
-            <div class="credential-label">Transparency Pledge</div>
-            <div class="credential-value">Full landed-cost itemisation</div>
-            <div class="credential-detail">Freight &middot; Duty &middot; Insurance &middot; Our fee &mdash; all shown</div>
-          </div>
+          <div class="credential"><div class="credential-label">Company Registration</div><div class="credential-value">FPM International Ltd</div><div class="credential-detail">Companies House &mdash; Registered May 2026</div></div>
+          <div class="credential"><div class="credential-label">SIC 46190</div><div class="credential-value">Non-specialist wholesale trade</div><div class="credential-detail">Agents involved in the sale of a variety of goods</div></div>
+          <div class="credential"><div class="credential-label">Headquarters</div><div class="credential-value">Brighton, United Kingdom</div><div class="credential-detail">Serving global buyers and Caribbean markets</div></div>
+          <div class="credential"><div class="credential-label">Transparency Pledge</div><div class="credential-value">Full landed-cost itemisation</div><div class="credential-detail">Freight &middot; Duty &middot; Insurance &middot; Our fee &mdash; all shown</div></div>
         </div>
       </div>
     </div>
@@ -1112,7 +802,7 @@
   <section id="contact">
     <span class="section-label">Get in Touch</span>
     <h2>Start Your Enquiry</h2>
-    <p class="section-sub">Tell our AI trade assistant what you need — it'll gather the details and connect you with the FPM team.</p>
+    <p class="section-sub">Tell our AI trade assistant what you need — it’ll gather the details and connect you with the FPM team.</p>
     <div class="contact-grid">
 
       <div class="chat-panel" id="chat-panel" role="region" aria-label="AI Trade Enquiry Assistant">
@@ -1132,26 +822,11 @@
       </div>
 
       <div class="contact-info">
-        <div class="ci-item">
-          <div class="ci-label">Email</div>
-          <div class="ci-value"><a href="mailto:info@fpmsg.co.uk">info@fpmsg.co.uk</a></div>
-        </div>
-        <div class="ci-item">
-          <div class="ci-label">Registered Office</div>
-          <div class="ci-value">Brighton, United Kingdom</div>
-        </div>
-        <div class="ci-item">
-          <div class="ci-label">Response Time</div>
-          <div class="ci-value">Within one business day, Mon&ndash;Fri</div>
-        </div>
-        <div class="ci-item">
-          <div class="ci-label">Operating Regions</div>
-          <div class="ci-value">UK &middot; China &middot; Caribbean &middot; West Africa</div>
-        </div>
-        <div class="ci-item">
-          <div class="ci-label">Tagline</div>
-          <div class="ci-value" style="font-family:'JetBrains Mono',monospace;font-size:.8rem;letter-spacing:.2em;opacity:.6;">TRADE &middot; TRUST &middot; TRACEABILITY</div>
-        </div>
+        <div class="ci-item"><div class="ci-label">Email</div><div class="ci-value"><a href="mailto:info@fpmsg.co.uk">info@fpmsg.co.uk</a></div></div>
+        <div class="ci-item"><div class="ci-label">Registered Office</div><div class="ci-value">Brighton, United Kingdom</div></div>
+        <div class="ci-item"><div class="ci-label">Response Time</div><div class="ci-value">Within one business day, Mon&ndash;Fri</div></div>
+        <div class="ci-item"><div class="ci-label">Operating Regions</div><div class="ci-value">UK &middot; China &middot; Caribbean &middot; West Africa</div></div>
+        <div class="ci-item"><div class="ci-label">Tagline</div><div class="ci-value" style="font-family:'JetBrains Mono',monospace;font-size:.8rem;letter-spacing:.2em;opacity:.6;">TRADE &middot; TRUST &middot; TRACEABILITY</div></div>
       </div>
 
     </div>
@@ -1174,9 +849,7 @@
       document.getElementById('navLinks').classList.toggle('open');
     });
     document.querySelectorAll('#navLinks a').forEach(function (a) {
-      a.addEventListener('click', function () {
-        document.getElementById('navLinks').classList.remove('open');
-      });
+      a.addEventListener('click', function () { document.getElementById('navLinks').classList.remove('open'); });
     });
 
     // Scroll fade-in
@@ -1189,15 +862,16 @@
 
     // AI Chat Assistant
     (function () {
-      var WORKER_URL = 'https://holy-smoke-922f.cachafpm.workers.dev';
+      var WORKER_URL    = 'https://holy-smoke-922f.cachafpm.workers.dev';
       var CHAT_ENDPOINT = WORKER_URL + '/api/chat';
       var SUBMIT_ENDPOINT = WORKER_URL + '/submit';
       var WEB3FORMS_KEY = '68f8c9d3-17eb-47d4-a85b-7b65aedc2310';
-      var CHAT_MODEL = 'claude-haiku-4-5-20251001';
-      var MAX_TOKENS = 300;
-      var MAX_MESSAGES = 20;
-      var SENTINEL_READY = '[CONTACT_READY]';
+      var CHAT_MODEL    = 'claude-haiku-4-5-20251001';
+      var MAX_TOKENS    = 300;
+      var MAX_MESSAGES  = 20;
+      var SENTINEL_READY  = '[CONTACT_READY]';
       var SENTINEL_CLOSED = '[FLOW_CLOSED]';
+      var LEAD_EMAIL    = 'info@fpmsg.co.uk';
 
       var SYSTEM_PROMPT = `You are FPM's digital trade assistant — B2B sourcing for Caribbean markets (Barbados, CARICOM). Quotes in BBD/USD.
 
@@ -1237,16 +911,10 @@ RULES:
       var state = {
         messages: [],
         lead: {
-          product: null,
-          quantity: null,
-          destination: null,
-          timeframe: null,
-          budget: null,
-          urgency: 'not_specified',
-          contactName: null,
-          contactEmail: null,
-          gdprAcknowledged: false,
-          submittedAt: null
+          product: null, quantity: null, destination: null,
+          timeframe: null, budget: null, urgency: 'not_specified',
+          contactName: null, contactEmail: null,
+          gdprAcknowledged: false, submittedAt: null
         },
         phase: '',
         sessionId: '',
@@ -1286,32 +954,51 @@ RULES:
         } else if (status === 'offline') {
           ind.classList.add('offline');
           lbl.textContent = 'AI Assistant — Offline';
+        } else if (status === 'error') {
+          ind.classList.add('error');
+          lbl.textContent = 'Connection error';
         } else {
           lbl.textContent = 'AI Assistant — Online';
         }
       }
 
       function updatePhase(newPhase) {
-        var order = ['qualifying', 'contact_capture', 'escalation', 'closed'];
-        var cur = order.indexOf(state.phase);
-        var next = order.indexOf(newPhase);
-        if (next < cur) throw new Error('Phase regression: ' + state.phase + ' → ' + newPhase);
-        if (next === cur) return;
+        var order = { qualifying: 0, contact_capture: 1, escalation: 2, closed: 3 };
+        var cur  = order[state.phase] !== undefined ? order[state.phase] : -1;
+        var next = order[newPhase]    !== undefined ? order[newPhase]    : -1;
+        if (next <= cur) throw new Error('Phase regression: ' + state.phase + ' → ' + newPhase);
         state.phase = newPhase;
+
         if (newPhase === 'contact_capture') {
           state.lead.gdprAcknowledged = true;
         }
+
         if (newPhase === 'escalation') {
+          var lead = state.lead;
+          var summary =
+            "Here's a summary of your enquiry:\n\n" +
+            'Product: '     + (lead.product     || 'Not provided') + '\n' +
+            'Quantity: '    + (lead.quantity    || 'Not provided') + '\n' +
+            'Destination: ' + (lead.destination || 'Not provided') + '\n' +
+            'Timeframe: '   + (lead.timeframe   || 'Not provided') + '\n' +
+            'Budget: '      + (lead.budget      || 'Not provided') + '\n' +
+            'Urgency: '     + lead.urgency + '\n' +
+            'Contact: '     + lead.contactName + ' <' + lead.contactEmail + '>' +
+            '\n\nClick \"Confirm and Send Enquiry\" to submit.';
+          renderMessage('assistant', summary);
           var bar = document.getElementById('chat-confirm-bar');
           if (bar) bar.hidden = false;
-        }
-        if (newPhase === 'closed') {
           var inp = document.getElementById('chat-input');
-          var btn = document.getElementById('chat-send');
           if (inp) inp.disabled = true;
-          if (btn) btn.disabled = true;
+        }
+
+        if (newPhase === 'closed') {
+          var inp2 = document.getElementById('chat-input');
+          var btn  = document.getElementById('chat-send');
           var bar2 = document.getElementById('chat-confirm-bar');
-          if (bar2) bar2.hidden = true;
+          if (inp2) inp2.disabled = true;
+          if (btn)  btn.disabled  = true;
+          if (bar2) bar2.hidden   = true;
         }
       }
 
@@ -1319,57 +1006,94 @@ RULES:
         var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         var trimmed = userText.trim();
         if (!state.lead.contactName) {
-          if (trimmed.length > 0 && trimmed.length < 80) {
-            state.lead.contactName = trimmed;
-          }
+          state.lead.contactName = trimmed;
         } else if (!state.lead.contactEmail) {
-          var match = trimmed.match(/[^\s@]+@[^\s@]+\.[^\s@]+/);
-          if (match && emailRegex.test(match[0])) {
-            state.lead.contactEmail = match[0];
+          if (emailRegex.test(trimmed)) {
+            state.lead.contactEmail = trimmed;
+          } else {
+            renderMessage('assistant', "That doesn't look like a valid email address — could you double-check?");
           }
         }
       }
 
       function buildLeadPayload() {
-        var lines = [];
-        state.messages.forEach(function (m) {
-          var secs = Math.round((m.ts - state.startedAt) / 1000);
-          lines.push(fmtTs(secs) + ' ' + m.role.toUpperCase() + ': ' + m.content);
-        });
         state.lead.submittedAt = new Date().toISOString();
+        var lead = state.lead;
+
+        var subject = '[FPM Lead] ' + (lead.product || '(not provided)') + ' — ' + (lead.destination || '(not provided)');
+        if (lead.urgency === 'yes') subject += ' — URGENT';
+
+        var transcriptLines = [];
+        state.messages.forEach(function (m) {
+          transcriptLines.push(fmtTs(m.ts) + ' ' + m.role.toUpperCase() + ': ' + m.content);
+        });
+
+        var messageBody =
+          'FPM AI Chat — New Trade Enquiry\n\n' +
+          'Session:     ' + (state.sessionId || 'N/A') + '\n' +
+          'Submitted:   ' + lead.submittedAt + '\n\n' +
+          '--- QUALIFICATION ---\n' +
+          'Product:     ' + (lead.product     || 'Not provided') + '\n' +
+          'Quantity:    ' + (lead.quantity    || 'Not provided') + '\n' +
+          'Destination: ' + (lead.destination || 'Not provided') + '\n' +
+          'Timeframe:   ' + (lead.timeframe   || 'Not provided') + '\n' +
+          'Budget:      ' + (lead.budget      || 'Not provided') + '\n' +
+          'Urgency:     ' + lead.urgency + '\n\n' +
+          '--- CONTACT ---\n' +
+          'Name:        ' + (lead.contactName  || '') + '\n' +
+          'Email:       ' + (lead.contactEmail || '') + '\n\n' +
+          '--- TRANSCRIPT ---\n' +
+          transcriptLines.join('\n');
+
         return {
           access_key: WEB3FORMS_KEY,
-          from_name: 'FPM International Website',
-          subject: 'New AI Chat Enquiry — ' + (state.lead.contactName || 'Unknown'),
-          replyto: state.lead.contactEmail || '',
+          subject:    subject,
+          email:      LEAD_EMAIL,
+          from_name:  lead.contactName || 'Unknown',
+          replyto:    lead.contactEmail || '',
+          message:    messageBody,
           lead: {
-            product: state.lead.product,
-            quantity: state.lead.quantity,
-            destination: state.lead.destination,
-            timeframe: state.lead.timeframe,
-            budget: state.lead.budget,
-            urgency: state.lead.urgency,
-            contactName: state.lead.contactName,
-            contactEmail: state.lead.contactEmail,
-            sessionId: state.sessionId,
-            submittedAt: state.lead.submittedAt
-          },
-          transcript: lines.join('\n')
+            product:      lead.product,
+            quantity:     lead.quantity,
+            destination:  lead.destination,
+            timeframe:    lead.timeframe,
+            budget:       lead.budget,
+            urgency:      lead.urgency,
+            contactName:  lead.contactName,
+            contactEmail: lead.contactEmail,
+            sessionId:    state.sessionId,
+            submittedAt:  lead.submittedAt
+          }
         };
       }
 
       function submitTranscript() {
-        var payload = buildLeadPayload();
+        var confirmBtn = document.getElementById('chat-confirm-btn');
+        if (confirmBtn) confirmBtn.disabled = true;
+
         return fetch(SUBMIT_ENDPOINT, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
+          body: JSON.stringify(buildLeadPayload())
+        }).then(function (r) {
+          if (!r.ok) throw new Error('HTTP ' + r.status);
+          try { updatePhase('closed'); } catch (e) {}
+          renderMessage('assistant', CLOSING_MESSAGE);
+        }).catch(function () {
+          showFallback('submit_error');
+          if (confirmBtn) confirmBtn.disabled = false;
         });
       }
 
-      function showFallback() {
-        setStatus('offline');
+      function showFallback(reason) {
         renderMessage('assistant', FALLBACK_MESSAGE);
+        setStatus('error');
+        if (state.phase !== 'closed') {
+          var inp = document.getElementById('chat-input');
+          var btn = document.getElementById('chat-send');
+          if (inp && state.phase !== 'escalation') inp.disabled = false;
+          if (btn) btn.disabled = false;
+        }
       }
 
       function callWorker(messages) {
@@ -1412,16 +1136,11 @@ RULES:
       }
 
       function sendMessage(text) {
-        var ts = Date.now();
-        state.messages.push({ role: 'user', content: text, ts: ts });
+        state.messages.push({ role: 'user', content: text, ts: relativeTs() });
         if (state.messages.length > MAX_MESSAGES) {
           state.messages = state.messages.slice(-MAX_MESSAGES);
         }
         renderMessage('user', text);
-
-        if (state.phase === 'contact_capture') {
-          extractContactData(text);
-        }
 
         var inp = document.getElementById('chat-input');
         var btn = document.getElementById('chat-send');
@@ -1433,21 +1152,18 @@ RULES:
           setStatus('online');
 
           var hasClosed = responseText.indexOf(SENTINEL_CLOSED) !== -1;
-          var hasReady = responseText.indexOf(SENTINEL_READY) !== -1;
+          var hasReady  = responseText.indexOf(SENTINEL_READY)  !== -1;
 
           var cleaned = responseText
-            .replace(/\[FLOW_CLOSED\]/g, '')
+            .replace(/\[FLOW_CLOSED\]/g,    '')
             .replace(/\[CONTACT_READY\]/g, '')
             .trim();
 
-          var aTs = Date.now();
-          state.messages.push({ role: 'assistant', content: responseText, ts: aTs });
-
-          if (cleaned) renderMessage('assistant', cleaned);
-
+          // FLOW_CLOSED takes priority — no /submit call
           if (hasClosed) {
             try { updatePhase('closed'); } catch (e) {}
-            submitTranscript().catch(function () {});
+            if (cleaned) renderMessage('assistant', cleaned);
+            state.messages.push({ role: 'assistant', content: cleaned, ts: relativeTs() });
             renderMessage('assistant', CLOSING_MESSAGE_NO_EMAIL);
             return;
           }
@@ -1456,20 +1172,30 @@ RULES:
             try { updatePhase('contact_capture'); } catch (e) {}
           }
 
-          if (state.phase === 'contact_capture' && state.lead.contactName && state.lead.contactEmail) {
+          // Render and store cleaned content (spec §5.3 step 4)
+          if (cleaned) renderMessage('assistant', cleaned);
+          state.messages.push({ role: 'assistant', content: cleaned, ts: relativeTs() });
+
+          // Extract contact data after response stored (spec §5.3 step 5)
+          if (state.phase === 'contact_capture') {
+            extractContactData(text);
+          }
+
+          // Trigger escalation once email confirmed (spec §5.3 step 6)
+          if (state.phase === 'contact_capture' && state.lead.contactEmail !== null) {
             try { updatePhase('escalation'); } catch (e) {}
           }
 
         }).catch(function () {
           setStatus('online');
-          showFallback();
+          showFallback('worker_error');
         }).finally(function () {
-          if (state.phase !== 'closed') {
+          // Re-enable input unless closed or escalation (escalation keeps input locked)
+          if (state.phase !== 'closed' && state.phase !== 'escalation') {
             var inp2 = document.getElementById('chat-input');
             var btn2 = document.getElementById('chat-send');
-            if (inp2) inp2.disabled = false;
+            if (inp2) { inp2.disabled = false; inp2.focus(); }
             if (btn2) btn2.disabled = false;
-            if (inp2) inp2.focus();
           }
         });
       }
@@ -1478,33 +1204,21 @@ RULES:
         state.startedAt = Date.now();
         state.phase = 'qualifying';
 
-        var inp = document.getElementById('chat-input');
-        var btn = document.getElementById('chat-send');
+        var inp       = document.getElementById('chat-input');
+        var btn       = document.getElementById('chat-send');
         var confirmBtn = document.getElementById('chat-confirm-btn');
+        var panel     = document.getElementById('chat-panel');
 
         if (btn) btn.addEventListener('click', handleSend);
         if (inp) {
           inp.addEventListener('keydown', function (e) {
-            if (e.key === 'Enter' && !e.shiftKey) {
-              e.preventDefault();
-              handleSend();
-            }
+            if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSend(); }
+          });
+          inp.addEventListener('focus', function () {
+            if (panel) panel.scrollIntoView({ behavior: 'smooth', block: 'end' });
           });
         }
-        if (confirmBtn) {
-          confirmBtn.addEventListener('click', function () {
-            confirmBtn.disabled = true;
-            submitTranscript().then(function () {
-              try { updatePhase('closed'); } catch (e) {}
-              var bar = document.getElementById('chat-confirm-bar');
-              if (bar) bar.hidden = true;
-              renderMessage('assistant', CLOSING_MESSAGE);
-            }).catch(function () {
-              renderMessage('assistant', FALLBACK_MESSAGE);
-              confirmBtn.disabled = false;
-            });
-          });
-        }
+        if (confirmBtn) confirmBtn.addEventListener('click', submitTranscript);
 
         setStatus('online');
         renderMessage('assistant', OPENING_MESSAGE);
