@@ -862,16 +862,16 @@
 
     // AI Chat Assistant
     (function () {
-      var WORKER_URL    = 'https://holy-smoke-922f.cachafpm.workers.dev';
-      var CHAT_ENDPOINT = WORKER_URL + '/api/chat';
+      var WORKER_URL      = 'https://holy-smoke-922f.cachafpm.workers.dev';
+      var CHAT_ENDPOINT   = WORKER_URL + '/api/chat';
       var SUBMIT_ENDPOINT = WORKER_URL + '/submit';
-      var WEB3FORMS_KEY = '68f8c9d3-17eb-47d4-a85b-7b65aedc2310';
-      var CHAT_MODEL    = 'claude-haiku-4-5-20251001';
-      var MAX_TOKENS    = 300;
-      var MAX_MESSAGES  = 20;
+      var WEB3FORMS_KEY   = '68f8c9d3-17eb-47d4-a85b-7b65aedc2310';
+      var CHAT_MODEL      = 'claude-haiku-4-5-20251001';
+      var MAX_TOKENS      = 300;
+      var MAX_MESSAGES    = 20;
       var SENTINEL_READY  = '[CONTACT_READY]';
       var SENTINEL_CLOSED = '[FLOW_CLOSED]';
-      var LEAD_EMAIL    = 'info@fpmsg.co.uk';
+      var LEAD_EMAIL      = 'info@fpmsg.co.uk';
 
       var SYSTEM_PROMPT = `You are FPM's digital trade assistant — B2B sourcing for Caribbean markets (Barbados, CARICOM). Quotes in BBD/USD.
 
@@ -1161,10 +1161,12 @@ RULES:
 
           // FLOW_CLOSED takes priority — no /submit call
           if (hasClosed) {
+            var wasInContactCapture = (state.phase === 'contact_capture');
             try { updatePhase('closed'); } catch (e) {}
             if (cleaned) renderMessage('assistant', cleaned);
             state.messages.push({ role: 'assistant', content: cleaned, ts: relativeTs() });
-            renderMessage('assistant', CLOSING_MESSAGE_NO_EMAIL);
+            // CLOSING_MESSAGE_NO_EMAIL only on the no-email path (TC-008)
+            if (wasInContactCapture) renderMessage('assistant', CLOSING_MESSAGE_NO_EMAIL);
             return;
           }
 
@@ -1190,7 +1192,7 @@ RULES:
           setStatus('online');
           showFallback('worker_error');
         }).finally(function () {
-          // Re-enable input unless closed or escalation (escalation keeps input locked)
+          // Re-enable unless closed or escalation (escalation locks input until confirm)
           if (state.phase !== 'closed' && state.phase !== 'escalation') {
             var inp2 = document.getElementById('chat-input');
             var btn2 = document.getElementById('chat-send');
@@ -1204,10 +1206,10 @@ RULES:
         state.startedAt = Date.now();
         state.phase = 'qualifying';
 
-        var inp       = document.getElementById('chat-input');
-        var btn       = document.getElementById('chat-send');
+        var inp        = document.getElementById('chat-input');
+        var btn        = document.getElementById('chat-send');
         var confirmBtn = document.getElementById('chat-confirm-btn');
-        var panel     = document.getElementById('chat-panel');
+        var panel      = document.getElementById('chat-panel');
 
         if (btn) btn.addEventListener('click', handleSend);
         if (inp) {

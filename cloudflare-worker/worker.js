@@ -83,22 +83,28 @@ async function handleChat(request, env, origin) {
       return json({ error: 'Bad request: messages exceeds limit of 20' }, 400, origin);
     }
 
-    const sessionId  = request.headers.get('X-Session-ID') || crypto.randomUUID();
-    const model      = env.CHAT_MODEL ?? body.model ?? 'claude-haiku-4-5-20251001';
-    const maxTokens  = Math.min(body.max_tokens ?? 300, 300);
+    const sessionId = request.headers.get('X-Session-ID') || crypto.randomUUID();
+    const model     = env.CHAT_MODEL ?? body.model ?? 'claude-haiku-4-5-20251001';
+    const maxTokens = Math.min(body.max_tokens ?? 300, 300);
 
     const anthropicBody = { model, max_tokens: maxTokens, messages: body.messages };
     if (body.system) anthropicBody.system = body.system;
 
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'x-api-key': env.ANTHROPIC_API_KEY,
-        'anthropic-version': '2023-06-01',
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify(anthropicBody),
-    });
+    let res;
+    try {
+      res = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: {
+          'x-api-key': env.ANTHROPIC_API_KEY,
+          'anthropic-version': '2023-06-01',
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify(anthropicBody),
+      });
+    } catch {
+      // Network / DNS / timeout — Anthropic unreachable
+      return json({ error: 'Service temporarily unavailable.' }, 503, origin);
+    }
 
     if (!res.ok) {
       if (res.status === 429) {
