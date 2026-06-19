@@ -14,13 +14,13 @@ For every requirement submitted, verify:
 
 FPM domain risk check — flag for extra scrutiny if the requirement touches:
 - Contact form handling or lead capture (data collection, GDPR)
-- External service integrations (Formspree, analytics, tracking pixels)
+- External service integrations (Cloudflare Worker, Web3Forms, analytics, tracking pixels)
 - Brand identity elements (FPM wordmark, colour tokens, typography)
 - Legal or compliance content (privacy policy, terms, Companies House data)
 
 GDPR check — flag YES / NO / UNCLEAR if the requirement involves:
 - Collecting visitor personal data (name, email, company)
-- Third-party data processing (Formspree, analytics tools)
+- Third-party data processing (Web3Forms, analytics tools)
 - Cookies or tracking
 - Any data retention or storage mechanism
 

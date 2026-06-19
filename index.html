@@ -805,10 +805,20 @@
     <p class="section-sub">Tell our AI trade assistant what you need — it’ll gather the details and connect you with the FPM team.</p>
     <div class="contact-grid">
 
-      <div class="chat-panel" id="chat-panel" role="region" aria-label="AI Trade Enquiry Assistant">
-        <div class="chat-status-bar">
-          <span class="chat-status-indicator" id="chat-status-indicator" aria-hidden="true"></span>
-          <span class="chat-status-label" id="chat-status-label">AI Assistant — Online</span>
+      <form class="contact-form" id="contactForm">
+        <input type="hidden" id="workerUrl" value="https://holy-smoke-922f.cachafpm.workers.dev" />
+        <input type="hidden" name="access_key" value="68f8c9d3-17eb-47d4-a85b-7b65aedc2310" />
+        <input type="hidden" name="subject" value="New enquiry from fpmsg.co.uk" />
+        <input type="hidden" name="from_name" value="FPM International Website" />
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" name="name" placeholder="Full name" required />
+          </div>
+          <div class="form-group">
+            <label>Company</label>
+            <input type="text" name="company" placeholder="Company name" />
+          </div>
         </div>
         <div class="chat-messages" id="chat-messages" role="log" aria-live="polite" aria-label="Conversation"></div>
         <div class="chat-confirm-bar" id="chat-confirm-bar" hidden>
@@ -819,7 +829,14 @@
           <textarea class="chat-input" id="chat-input" rows="2" placeholder="Type your message…" maxlength="500" autocomplete="off"></textarea>
           <button class="chat-send-btn" id="chat-send" type="button" aria-label="Send message">Send</button>
         </div>
-      </div>
+        <div class="form-group">
+          <label>Tell Us What You Need</label>
+          <textarea name="message" placeholder="Product type, quantity, destination, timeline&hellip;"></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Send Enquiry &rarr;</button>
+        <p class="form-notice">We respond within 48 hours. Your enquiry is processed securely and never passed to third parties without your consent.</p>
+        <div id="formMsg"></div>
+      </form>
 
       <div class="contact-info">
         <div class="ci-item"><div class="ci-label">Email</div><div class="ci-value"><a href="mailto:info@fpmsg.co.uk">info@fpmsg.co.uk</a></div></div>
@@ -860,172 +877,39 @@
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade-in').forEach(function (el) { io.observe(el); });
 
-    // AI Chat Assistant
-    (function () {
-      var WORKER_URL      = 'https://holy-smoke-922f.cachafpm.workers.dev';
-      var CHAT_ENDPOINT   = WORKER_URL + '/api/chat';
-      var SUBMIT_ENDPOINT = WORKER_URL + '/submit';
-      var WEB3FORMS_KEY   = '68f8c9d3-17eb-47d4-a85b-7b65aedc2310';
-      var CHAT_MODEL      = 'claude-haiku-4-5-20251001';
-      var MAX_TOKENS      = 300;
-      var MAX_MESSAGES    = 20;
-      var SENTINEL_READY  = '[CONTACT_READY]';
-      var SENTINEL_CLOSED = '[FLOW_CLOSED]';
-      var LEAD_EMAIL      = 'info@fpmsg.co.uk';
+    // Contact form — submits via Cloudflare Worker to Web3Forms
+    var form = document.getElementById('contactForm');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
 
-      var SYSTEM_PROMPT = `You are FPM's digital trade assistant — B2B sourcing for Caribbean markets (Barbados, CARICOM). Quotes in BBD/USD.
+      var workerUrl = document.getElementById('workerUrl').value;
+      var btn = form.querySelector('.btn-submit');
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
 
-CATEGORIES (HS-aligned, Ch.84–90):
-1. Food Processing & Hospitality Equipment — juicers, catering machinery
-2. Refrigeration & Cold Chain — walk-in chillers, solar freezers, display refrigeration
-3. Materials Handling — pallet jacks, hand trucks
-4. Measurement & Weighing — platform scales, industrial weighing
-5. Electrical & Lighting — LED, solar-powered luminaires
-6. Construction & Shopfitting — PVC foam board, display systems, shelving
-7. Agricultural Supplies & Packaging — mesh bags, agricultural packaging
-8. Electronics & Surveillance — security cameras, commercial electronics
+      var data = {};
+      new FormData(form).forEach(function (v, k) { data[k] = v; });
 
-For each category, compliance requirements (CE marking, F-Gas, food safety, fire certificates) are things FPM is aware of — not guarantees you can make.
-
-RULES:
-- Not a human. If asked, confirm digital assistant only. Never name the AI model or provider.
-- Never commit to a specific delivery lead time.
-- Out-of-scope product: say "While we can't take this on directly, please email info@fpmsg.co.uk and we'll do our best to point you in the right direction." Emit [FLOW_CLOSED].
-- Unsupported/sanctioned destination: say "Unfortunately this destination is outside our current operating scope. While we can't take this on directly, please email info@fpmsg.co.uk and we'll do our best to point you in the right direction." Do not name it as sanctioned. Emit [FLOW_CLOSED].
-- Collect 6 data points one at a time, skipping already-provided: (1) product type, (2) quantity, (3) destination, (4) timeframe, (5) budget, (6) urgency ("Is this time-sensitive?").
-- If vague: one specific clarifying follow-up, then accept and move on. Never repeat a covered question.
-- If multiple data points in one message: acknowledge all, skip covered questions.
-- Normalise: quantities ("about twenty" → "20 (approx)"), budgets ("fifty grand" → "USD 50,000 (approx)"), timelines ("next year" → "Q3/Q4 2026 (approx)").
-- When all 6 collected: emit [CONTACT_READY] on its own line. Next turn display verbatim: "Your details will be shared with FPM International to process your enquiry. See our privacy notice for details." Then ask for name, then email.
-- If prospect declines email: emit [FLOW_CLOSED] and say "No problem — whenever you're ready, reach us at info@fpmsg.co.uk. We'd be glad to help."
-- Replies: max 2 short paragraphs or 3 bullets per turn.`;
-
-      var OPENING_MESSAGE = "Hello — I'm FPM's digital trade assistant. We source commercial and industrial equipment for businesses across Barbados and the Caribbean: refrigeration, food processing machinery, materials handling, lighting, shelving, and more.\n\nTell me about what you're looking to source and I'll help you get started.";
-
-      var FALLBACK_MESSAGE = "I'm sorry, I'm having trouble connecting right now. Please try again in a moment, or contact our team directly at info@fpmsg.co.uk — we'll be happy to help.";
-
-      var CLOSING_MESSAGE = "Thank you — your enquiry has been sent to the FPM team. We'll review your requirements and come back with confirmation of how we can help and the next steps for your enquiry. You can expect a response within one business day, Mon–Fri, to the email address you provided. If you need to reach us in the meantime, you can also email info@fpmsg.co.uk.";
-
-      var CLOSING_MESSAGE_NO_EMAIL = "No problem — whenever you're ready, you can reach the FPM team directly at info@fpmsg.co.uk. We'd be glad to help.";
-
-      var state = {
-        messages: [],
-        lead: {
-          product: null, quantity: null, destination: null,
-          timeframe: null, budget: null, urgency: 'not_specified',
-          contactName: null, contactEmail: null,
-          gdprAcknowledged: false, submittedAt: null
-        },
-        phase: '',
-        sessionId: '',
-        startedAt: null
-      };
-
-      function relativeTs() {
-        return Math.round((Date.now() - state.startedAt) / 1000);
-      }
-
-      function fmtTs(secs) {
-        var m = Math.floor(secs / 60);
-        var s = secs % 60;
-        return '[' + (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s + ']';
-      }
-
-      function renderMessage(role, text) {
-        var log = document.getElementById('chat-messages');
-        var wrap = document.createElement('div');
-        wrap.className = 'chat-message chat-message--' + role;
-        wrap.setAttribute('data-role', role);
-        var bubble = document.createElement('span');
-        bubble.className = 'chat-message__bubble';
-        bubble.textContent = text;
-        wrap.appendChild(bubble);
-        log.appendChild(wrap);
-        log.scrollTop = log.scrollHeight;
-      }
-
-      function setStatus(status) {
-        var ind = document.getElementById('chat-status-indicator');
-        var lbl = document.getElementById('chat-status-label');
-        ind.className = 'chat-status-indicator';
-        if (status === 'thinking') {
-          ind.classList.add('thinking');
-          lbl.textContent = 'AI Assistant — Thinking…';
-        } else if (status === 'offline') {
-          ind.classList.add('offline');
-          lbl.textContent = 'AI Assistant — Offline';
-        } else if (status === 'error') {
-          ind.classList.add('error');
-          lbl.textContent = 'Connection error';
-        } else {
-          lbl.textContent = 'AI Assistant — Online';
-        }
-      }
-
-      function updatePhase(newPhase) {
-        var order = { qualifying: 0, contact_capture: 1, escalation: 2, closed: 3 };
-        var cur  = order[state.phase] !== undefined ? order[state.phase] : -1;
-        var next = order[newPhase]    !== undefined ? order[newPhase]    : -1;
-        if (next <= cur) throw new Error('Phase regression: ' + state.phase + ' → ' + newPhase);
-        state.phase = newPhase;
-
-        if (newPhase === 'contact_capture') {
-          state.lead.gdprAcknowledged = true;
-        }
-
-        if (newPhase === 'escalation') {
-          var lead = state.lead;
-          var summary =
-            "Here's a summary of your enquiry:\n\n" +
-            'Product: '     + (lead.product     || 'Not provided') + '\n' +
-            'Quantity: '    + (lead.quantity    || 'Not provided') + '\n' +
-            'Destination: ' + (lead.destination || 'Not provided') + '\n' +
-            'Timeframe: '   + (lead.timeframe   || 'Not provided') + '\n' +
-            'Budget: '      + (lead.budget      || 'Not provided') + '\n' +
-            'Urgency: '     + lead.urgency + '\n' +
-            'Contact: '     + lead.contactName + ' <' + lead.contactEmail + '>' +
-            '\n\nClick \"Confirm and Send Enquiry\" to submit.';
-          renderMessage('assistant', summary);
-          var bar = document.getElementById('chat-confirm-bar');
-          if (bar) bar.hidden = false;
-          var inp = document.getElementById('chat-input');
-          if (inp) inp.disabled = true;
-        }
-
-        if (newPhase === 'closed') {
-          var inp2 = document.getElementById('chat-input');
-          var btn  = document.getElementById('chat-send');
-          var bar2 = document.getElementById('chat-confirm-bar');
-          if (inp2) inp2.disabled = true;
-          if (btn)  btn.disabled  = true;
-          if (bar2) bar2.hidden   = true;
-        }
-      }
-
-      function extractContactData(userText) {
-        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        var trimmed = userText.trim();
-        if (!state.lead.contactName) {
-          state.lead.contactName = trimmed;
-        } else if (!state.lead.contactEmail) {
-          if (emailRegex.test(trimmed)) {
-            state.lead.contactEmail = trimmed;
+      fetch(workerUrl + '/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+          if (d.success) {
+            showMsg('success', 'Enquiry received — we\'ll be in touch within 48 hours.');
+            form.reset();
           } else {
-            renderMessage('assistant', "That doesn't look like a valid email address — could you double-check?");
+            showMsg('error', 'Something went wrong — please email us directly at info@fpmsg.co.uk');
           }
-        }
-      }
-
-      function buildLeadPayload() {
-        state.lead.submittedAt = new Date().toISOString();
-        var lead = state.lead;
-
-        var subject = '[FPM Lead] ' + (lead.product || '(not provided)') + ' — ' + (lead.destination || '(not provided)');
-        if (lead.urgency === 'yes') subject += ' — URGENT';
-
-        var transcriptLines = [];
-        state.messages.forEach(function (m) {
-          transcriptLines.push(fmtTs(m.ts) + ' ' + m.role.toUpperCase() + ': ' + m.content);
+        })
+        .catch(function () {
+          showMsg('error', 'Network error — please email us directly at info@fpmsg.co.uk');
+        })
+        .finally(function () {
+          btn.disabled = false;
+          btn.textContent = 'Send Enquiry →';
         });
 
         var messageBody =

@@ -15,7 +15,7 @@ Public marketing website for FPM International Ltd — a Brighton-based trade in
 | Concern | Detail |
 |---|---|
 | All code | `index.html` — HTML + `<style>` + `<script>` in one file |
-| Form handling | Formspree (third-party) — form ID in `action` attribute |
+| Form handling | Cloudflare Worker → Web3Forms (Worker URL in hidden input, key in hidden input) |
 | Fonts | Google Fonts CDN (Rajdhani, JetBrains Mono) |
 | Deployment | GitHub Pages — `main` branch |
 | Agents | `.claude/agents/` — quality gate subagents |
@@ -62,8 +62,8 @@ Fonts: **Rajdhani 700** (headings/wordmark) · **JetBrains Mono 600** (labels/ta
 - **No framework** — vanilla JS only. No React, Vue, jQuery, etc.
 - **No build step** — what's committed is what's deployed.
 - **XSS** — no user content is inserted into the DOM; the JS is display-only. If dynamic content is ever added, sanitise before innerHTML.
-- **External scripts** — Google Fonts and Formspree only. Any new third-party script requires a security review.
-- **Formspree** — form `action` attribute holds the endpoint. Replace `YOUR_FORM_ID` with the live ID before launch.
+- **External scripts** — Google Fonts only. Any new third-party script requires a security review.
+- **Form handling** — contact form submits as JSON to the Cloudflare Worker `/submit` endpoint, which proxies to Web3Forms. Worker URL is in a hidden `#workerUrl` input. Web3Forms access key is in a hidden `name="access_key"` input (public identifier, not a secret).
 - **Fade-in** — `.fade-in` elements animate via IntersectionObserver. New content sections should use this class.
 
 ---

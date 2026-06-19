@@ -60,7 +60,7 @@ No stage is skipped. No gate is bypassed. A CRITICAL issue from any gate is a ha
 ## FPM-web specific agent behaviour
 
 - **`build-gate`** must reference `index.html` as the single source file. Flag any suggestion to split files as out of scope.
-- **`security-gate`** must check: no new third-party scripts without review, Formspree ID is real (not placeholder), no credentials in source, GDPR data flows unchanged.
+- **`security-gate`** must check: no new third-party scripts without review, Worker URL and Web3Forms key are present (not placeholder), no credentials in source, GDPR data flows unchanged.
 - **`requirements-gate`** — flag any requirement that introduces personal data collection, cookies, or analytics for extra GDPR scrutiny.
 - **`spec-gate`** — must verify FPM design tokens are used (`--cream`, `--ink`, `--red`, Rajdhani, JetBrains Mono). Reject specs with vague visual descriptions.
 
@@ -81,7 +81,7 @@ Use conventional commits tied to requirement IDs:
 
 ```
 feat(REQ-001): add testimonials section
-fix(REQ-007): correct Formspree endpoint
+fix(REQ-007): correct Worker endpoint
 chore: bump version to v1.1.0
 ```
 
@@ -89,7 +89,7 @@ chore: bump version to v1.1.0
 
 ## GDPR surface (fpm-web specific)
 
-- Contact form collects: name, company, email, service interest, message — transmitted to Formspree
+- Contact form collects: name, company, email, service interest, message — transmitted via Cloudflare Worker to Web3Forms
 - Google Fonts loads from Google CDN — IP address transmitted; standard industry practice
 - No cookies, no analytics, no tracking currently implemented
 - Any new data collection or third-party script must be flagged at `requirements-gate` before spec work begins

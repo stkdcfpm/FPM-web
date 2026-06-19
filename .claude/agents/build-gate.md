@@ -19,7 +19,7 @@ For every code change submitted, verify:
    - Flag any hardcoded colour or font that deviates from the token system as MAJOR
 
 3. ARCHITECTURE COMPLIANCE — flag as CRITICAL if the change introduces:
-   - External dependencies or script imports beyond Google Fonts and Formspree
+   - External dependencies or script imports beyond Google Fonts
    - A build step or bundler requirement
    - Server-side logic
    - File splitting (index.html must remain the single source)
@@ -35,10 +35,11 @@ For every code change submitted, verify:
    - New JS must be vanilla, no framework imports
    - Event listeners must be attached after DOM ready (existing pattern: inline at bottom of body)
 
-6. FORMSPREE INTEGRATION
-   - If the form `action` is modified, verify the new endpoint is a valid Formspree URL
-   - The AJAX submission pattern (`fetch` + `FormData` + JSON accept header) must be preserved
-   - `YOUR_FORM_ID` placeholder must not be deployed to production — flag as CRITICAL if present in a production-targeted PR
+6. FORM INTEGRATION
+   - Contact form must submit as JSON POST to the Cloudflare Worker URL stored in `#workerUrl` hidden input
+   - `access_key` hidden input must contain a valid Web3Forms UUID (not a placeholder)
+   - The fetch → JSON → success/error pattern must be preserved
+   - Flag any reversion to Formspree or direct form action as CRITICAL
 
 7. ACCESSIBILITY BASELINE
    - `<img>` tags must have `alt` attributes — flag missing alt as MAJOR
