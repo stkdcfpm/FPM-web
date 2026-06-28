@@ -11,6 +11,23 @@
  *   CHAT_MODEL         — optional model override (default: claude-haiku-4-5-20251001)
  */
 
+// Per-IP rate limiting for /api/chat (per-isolate, resets on cold start)
+const _rlMap = new Map();
+const RL_LIMIT  = 10;      // max requests
+const RL_WINDOW = 60_000;  // per ms window
+
+function isRateLimited(ip) {
+  const now   = Date.now();
+  const entry = _rlMap.get(ip) || { count: 0, start: now };
+  if (now - entry.start > RL_WINDOW) {
+    _rlMap.set(ip, { count: 1, start: now });
+    return false;
+  }
+  entry.count++;
+  _rlMap.set(ip, entry);
+  return entry.count > RL_LIMIT;
+}
+
 const ALLOWED_ORIGINS = [
   'https://fpmsg.co.uk',
   'https://www.fpmsg.co.uk',
@@ -73,6 +90,11 @@ async function handleForm(request, origin) {
 }
 
 async function handleChat(request, env, origin) {
+  const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
+  if (isRateLimited(ip)) {
+    return json({ error: 'Too many requests. Please wait a moment and try again.' }, 429, origin);
+  }
+
   if (!env.ANTHROPIC_API_KEY) {
     return json({ error: 'Service temporarily unavailable.' }, 503, origin);
   }

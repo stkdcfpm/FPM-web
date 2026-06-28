@@ -33,9 +33,7 @@ Items identified but deferred. Review before each release.
 ### AI-GAP-001 — No rate limiting on `/api/chat` endpoint
 **Area:** Cloudflare Worker — AI chat  
 **Logged:** v1.1.0  
-**Detail:** The Worker proxies all chat requests to Anthropic without per-IP or per-session rate limiting. A malicious actor could generate high Anthropic API costs by flooding the endpoint. CORS restricts browser origins but does not prevent direct cURL requests.  
-**Risk level:** Medium — financial risk if abused; no data risk.  
-**Decision:** Acceptable for pre-launch. Add Cloudflare rate limiting rule on `/api/chat` before high-traffic promotion.
+**Status:** Partially resolved v1.1.1 — in-Worker per-IP rate limiter added (10 req / 60s). Resets per-isolate, not globally. Sufficient to deter casual abuse. Upgrade to Cloudflare native rate limiting rule before high-traffic promotion for global enforcement.
 
 ### AI-GAP-002 — Conversation history held client-side only
 **Area:** AI chat — session continuity  
