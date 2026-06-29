@@ -18,15 +18,28 @@ Items identified but deferred. Review before each release.
 ### LEGAL-GAP-001 — No privacy policy page
 **Area:** GDPR — visitor data handling disclosure  
 **Logged:** v1.0.0  
-**Detail:** The site collects personal data via the contact form (name, email, company) and transmits it to Web3Forms via the Cloudflare Worker. Under GDPR, a privacy notice is required. No privacy policy page exists.  
-**Risk level:** Medium — not a live compliance breach while the site is pre-launch, but must be resolved before going live with external clients.  
-**Decision:** Deferred until launch-readiness review.
+**Status:** Resolved v1.1.0 — `privacy.html` added covering contact form and AI chat data flows.
 
 ### LEGAL-GAP-002 — No cookie notice
 **Area:** GDPR — cookie consent  
 **Logged:** v1.0.0  
 **Detail:** Google Fonts loads from `fonts.googleapis.com` and `fonts.gstatic.com`, which may transmit IP addresses to Google. If analytics or tracking is added in future, a cookie consent mechanism is required.  
 **Decision:** Low risk while no analytics or tracking is present. Review if any tracking scripts are added.
+
+---
+
+## AI Chat
+
+### AI-GAP-001 — No rate limiting on `/api/chat` endpoint
+**Area:** Cloudflare Worker — AI chat  
+**Logged:** v1.1.0  
+**Status:** Partially resolved v1.1.1 — in-Worker per-IP rate limiter added (10 req / 60s). Resets per-isolate, not globally. Sufficient to deter casual abuse. Upgrade to Cloudflare native rate limiting rule before high-traffic promotion for global enforcement.
+
+### AI-GAP-002 — Conversation history held client-side only
+**Area:** AI chat — session continuity  
+**Logged:** v1.1.0  
+**Detail:** Chat history lives in a JS array in the page. Refreshing the page clears history. No server-side session store.  
+**Decision:** Accepted — stateless design is intentional for a marketing chat widget. Not a gap to fix.
 
 ---
 

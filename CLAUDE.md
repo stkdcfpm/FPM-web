@@ -6,7 +6,7 @@ For business context including trade corridors, product categories, and company 
 
 Public marketing website for FPM International Ltd — a Brighton-based trade intermediary. Single-file static site — all code lives in `index.html`. No build step, no framework, no dependencies beyond Google Fonts. Deployed via GitHub Pages.
 
-**Current version: v1.0.0**
+**Current version: v1.1.1**
 
 ---
 
@@ -16,8 +16,12 @@ Public marketing website for FPM International Ltd — a Brighton-based trade in
 |---|---|
 | All code | `index.html` — HTML + `<style>` + `<script>` in one file |
 | Form handling | Cloudflare Worker → Web3Forms (Worker URL in hidden input, key in hidden input) |
+| AI chat | Cloudflare Worker `/api/chat` → Anthropic API (key stored as Worker secret, never in browser) |
+| Worker URL | `https://holy-smoke-922f.cachafpm.workers.dev` — **deployed and live** |
+| Worker source | `cloudflare-worker/worker.js` |
 | Fonts | Google Fonts CDN (Rajdhani, JetBrains Mono) |
 | Deployment | GitHub Pages — `main` branch |
+| Privacy policy | `privacy.html` — GDPR disclosure for contact form and AI chat |
 | Agents | `.claude/agents/` — quality gate subagents |
 | Commands | `.claude/commands/` — slash commands |
 | Councils | `docs/councils/` — LLM Council decision logs |
@@ -64,6 +68,8 @@ Fonts: **Rajdhani 700** (headings/wordmark) · **JetBrains Mono 600** (labels/ta
 - **XSS** — no user content is inserted into the DOM; the JS is display-only. If dynamic content is ever added, sanitise before innerHTML.
 - **External scripts** — Google Fonts only. Any new third-party script requires a security review.
 - **Form handling** — contact form submits as JSON to the Cloudflare Worker `/submit` endpoint, which proxies to Web3Forms. Worker URL is in a hidden `#workerUrl` input. Web3Forms access key is in a hidden `name="access_key"` input (public identifier, not a secret).
+- **AI chat** — `WORKER_URL` and `CHAT_ENDPOINT` are JS constants at top of `<script>`. The Worker proxies to Anthropic; `ANTHROPIC_API_KEY` is a Cloudflare Worker secret (never in source). `WEB3FORMS_KEY` is a public identifier in source — not a secret.
+- **Cloudflare Worker** — deployed at `https://holy-smoke-922f.cachafpm.workers.dev`. CORS is restricted to `fpmsg.co.uk`. Source in `cloudflare-worker/worker.js`. To update: edit source, deploy via `wrangler deploy` or Cloudflare dashboard.
 - **Fade-in** — `.fade-in` elements animate via IntersectionObserver. New content sections should use this class.
 
 ---
