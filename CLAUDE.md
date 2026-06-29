@@ -6,7 +6,7 @@ For business context including trade corridors, product categories, and company 
 
 Public marketing website for FPM International Ltd — a Brighton-based trade intermediary. Single-file static site — all code lives in `index.html`. No build step, no framework, no dependencies beyond Google Fonts. Deployed via GitHub Pages.
 
-**Current version: v1.1.0**
+**Current version: v1.1.1**
 
 ---
 
