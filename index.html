@@ -1072,16 +1072,25 @@
     function sendMessage(text) {
       state.messages.push({ role: 'user', content: text, ts: relativeTs() });
 
-      if (state.phase === 'contact_capture') {
+      if (state.phase === ‘contact_capture’) {
         var hadName = !!state.lead.contactName;
         extractContactData(text);
-        if (!state.lead.contactName) return;
+        var inp2 = document.getElementById(‘chat-input’);
+        var btn2 = document.getElementById(‘chat-send’);
+        if (!state.lead.contactName) {
+          renderMessage(‘assistant’, ‘Could you tell me your name?’);
+          if (inp2) inp2.disabled = false;
+          if (btn2) btn2.disabled = false;
+          return;
+        }
         if (!state.lead.contactEmail) {
-          if (!hadName) renderMessage('assistant', 'Thanks ' + state.lead.contactName + '! What’s your email address?');
+          if (!hadName) renderMessage(‘assistant’, ‘Thanks ‘ + state.lead.contactName + ‘! What’s your email address?’);
+          if (inp2) inp2.disabled = false;
+          if (btn2) btn2.disabled = false;
           return;
         }
         /* Both name and email collected — go straight to escalation, no AI call needed */
-        try { updatePhase('escalation'); } catch (e) {}
+        try { updatePhase(‘escalation’); } catch (e) {}
         return;
       } else {
         extractLeadData(text);
